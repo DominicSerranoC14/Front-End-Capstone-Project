@@ -1,0 +1,65 @@
+
+/*  Example part numbers: BMP-121048-06096 / BVM-U12K-12120  */
+/*  Split part number at '-' and search for key of 'BMP'  */
+/*  When a matching object is found and it has a proto_key of true, it is set as the prototype  */
+
+{ "key": "bmp", "base-descrip": "...", "proto_key": true },
+
+{ "key": "bvm", "base-descrip": "...", "proto_key": true },
+
+/**************/
+
+/*  The second value parsed from the partnumber is searched for  */
+/*  If an object has an item_key that matches, then it is returned and chained to the prototype  */
+
+{ "item_key":"121048", "proto_key": "bmp", "name": "", "quantity": "" },
+{ "item_key":"141048", "proto_key": "bmp", "name": "", "quantity": "" },
+
+{ "item_key":"u12k", "proto_key": "bvm", "name": "", "quantity": "" },
+{ "item_key":"12k", "proto_key": "bvm", "name": "", "quantity": "" },
+
+/*************/
+
+/*  Kit items must be searched by the proto_key first, multiple items may have the same kit_key */
+/*  If the kit_key has a matching proto_key of the partnumber searched then it is chanined to the item_key object  */
+
+{ "kit_key": "06096", "proto_key": "121048", "item1": "...", "item2": "..."  },
+{ "kit_key": "09096", "proto_key": "121048", "item1": "...", "item2": "..."  },
+{ "kit_key": "12096", "proto_key": "121048", "item1": "...", "item2": "..."  },
+{ "kit_key": "06120", "proto_key": "121048", "item1": "...", "item2": "..."  },
+{ "kit_key": "09120", "proto_key": "121048", "item1": "...", "item2": "..."  },
+{ "kit_key": "12120", "proto_key": "121048", "item1": "...", "item2": "..."  },
+
+{ "kit_key": "06096", "proto_key": "141048", "item1": "...", "item2": "..."  },
+{ "kit_key": "09096", "proto_key": "141048", "item1": "...", "item2": "..."  },
+{ "kit_key": "12096", "proto_key": "141048", "item1": "...", "item2": "..."  },
+{ "kit_key": "06120", "proto_key": "141048", "item1": "...", "item2": "..."  },
+{ "kit_key": "09120", "proto_key": "141048", "item1": "...", "item2": "..."  },
+{ "kit_key": "12120", "proto_key": "141048", "item1": "...", "item2": "..."  },
+
+{ "kit_key": "06096", "proto_key": "u12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "09096", "proto_key": "u12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "12096", "proto_key": "u12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "06120", "proto_key": "u12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "09120", "proto_key": "u12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "12120", "proto_key": "u12k", "item1": "...", "item2": "..."  },
+
+{ "kit_key": "06096", "proto_key": "12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "09096", "proto_key": "12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "12096", "proto_key": "12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "06120", "proto_key": "12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "09120", "proto_key": "12k", "item1": "...", "item2": "..."  },
+{ "kit_key": "12120", "proto_key": "12k", "item1": "...", "item2": "..."  },
+
+
+/*  Example of searched and returned objects:  */
+/*  Searched p#: BMP-121048-06096  */
+
+/*  The prototype  */
+{ "key": "bmp", "base-descrip": "...", "proto_key": true },
+
+/*  Chained to prototype, will add to base description, etc.  */
+{ "item_key":"121048", "proto_key": "bmp", "name": "", "quantity": "" },
+
+/*  Chained to item_key, will add to base description, etc.  */
+{ "kit_key": "06096", "proto_key": "bmp", "item1": "...", "item2": "..."  },
