@@ -4,3 +4,6 @@ styles/
 app/factories/values/FirebaseCreds.js
 npm-debug.log
 app/values
+APIKEY.md
+example_data.json
+parsing.js
