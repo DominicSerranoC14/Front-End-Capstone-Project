@@ -3,63 +3,341 @@
 /*  Split part number at '-' and search for key of 'BMP'  */
 /*  When a matching object is found and it has a proto_key of true, it is set as the prototype  */
 
-{ "key": "bmp", "base-descrip": "...", "proto_key": true },
+{
+  "key": "bmp",
+  "base-desc": "Universal Monopole Platform with ",
+  "proto_key": true,
+  "items":
+  {"name": "Platform Weldment", "quantity": "3" }
+  {"name": "Ringmount Weldment", "quantity": "3"}
+  {"name": "5/8in x 42in  Threaded Rods", "quantity": "9"}
+  {"name": "42in Monopole Arms", "quantity": "3"}
+  {"name": "Monopole Splice Plate", "quantity": "3"}
+  {"name": "Ringmount Pivot Bracket", "quantity": "6"}
+  {"name": "3/4in Bolt Kits", "quantity": "12"}
+  {"name": "5/8in Bolt Kits", "quantity": "12"}
+  {"name": "1/2in x 18in Threaded Rods", "quantity": "12"}
+},
 
-{ "key": "bvm", "base-descrip": "...", "proto_key": true },
+
+{
+  "key": "bvm",
+  "base-descrip": "V-Mount ", "proto_key": true,
+  "items":
+    {"name":"V-Mount Frames", "quantity": "2"}
+    {"name":"Apex Plates", "item2-q": "2"}
+    {"name": "2in Bolt Kits", "quantity": "12"}
+    {"name": "5/8in Bolt Kits", "quantity": "12"}
+},
 
 /**************/
 
 /*  The second value parsed from the partnumber is searched for  */
 /*  If an object has an item_key that matches, then it is returned and chained to the prototype  */
 
-{ "item_key":"121048", "proto_key": "bmp", "name": "", "quantity": "" },
-{ "item_key":"141048", "proto_key": "bmp", "name": "", "quantity": "" },
 
-{ "item_key":"u12k", "proto_key": "bvm", "name": "", "quantity": "" },
-{ "item_key":"12k", "proto_key": "bvm", "name": "", "quantity": "" },
+/*** BMP ***/
+/* BMP Base pallet items with face pipe */
+{
+  "item_key":"121048", "desc": "12' Face Pipe. ", "proto_key": "bmp",
+  "items":
+    {"name": "3-1/2in x 12' Galv. Pipe", "quantity": "3"}
+},
+
+{
+  "item_key":"141048", "proto_key": "bmp", "desc": "14' Face Pipe. ",
+  "items":
+    {"name": "3-1/2in x 14' Galv. Pipe", "quantity": "3"}
+},
+
+
+/*** BVM ***/
+/* BVM Base pallet items with face pipe bucket contents */
+{
+  "item_key": "u12k", "proto_key": "bvm", "desc": "Universal, 12' Knockdown Face. ",
+  "items":
+    {"name": "3-1/2in x 5' Galv. Pipe", "quantity": "1"}
+    {"name":"1/2in x 18in Threaded Rods", "item3-q": "6"}
+    {"name":"1/2in x 8in Threaded Rods", "item3-q": "2"}
+    {"name": "Face Angle Bundle", "quantity": "1"}
+    {"name": "3-1/2in U-bolts", "quantity": "8"}
+    {"name": "2-1/2in U-bolts", "quantity": "3"}
+    {"name": "14in Plain Angle", "quantity": "4"}
+    {"name": "14in V-Notch Angle", "quantity": "4"}
+    {"name": "Slotted U-plate", "quantity": "1"}
+    {"name": "Two-Hole U-plate", "quantity": "3"}
+    {"name": "Two Slot Saddle Clamp", "quantity": "1"}
+    {"name": "Large L-Bracket", "quantity": "1"}
+    {"name": "Small L-Bracket", "quantity": "1"}
+},
+
+{
+  "item_key":"12k", "proto_key": "bvm", "desc": "Straight Fit, 12' Knockdown Face",
+  "items":
+    {"name": "1/2in x 8in Threaded Rods", "quantity": "10"}
+    {"name": "Large L-Bracket", "quantity": "3"}
+    {"name": "Small L-Bracket", "quantity": "3"}
+    {"name": "2-1/2in U-bolts", "quantity": "9"}
+    {"name": "Two Slot Saddle Clamp", "quantity": "5"}
+},
 
 /*************/
 
 /*  Kit items must be searched by the proto_key first, multiple items may have the same kit_key */
 /*  If the kit_key has a matching proto_key of the partnumber searched then it is chanined to the item_key object  */
 
-{ "kit_key": "06096", "proto_key": "121048", "item1": "...", "item2": "..."  },
-{ "kit_key": "09096", "proto_key": "121048", "item1": "...", "item2": "..."  },
-{ "kit_key": "12096", "proto_key": "121048", "item1": "...", "item2": "..."  },
-{ "kit_key": "06120", "proto_key": "121048", "item1": "...", "item2": "..."  },
-{ "kit_key": "09120", "proto_key": "121048", "item1": "...", "item2": "..."  },
-{ "kit_key": "12120", "proto_key": "121048", "item1": "...", "item2": "..."  },
 
-{ "kit_key": "06096", "proto_key": "141048", "item1": "...", "item2": "..."  },
-{ "kit_key": "09096", "proto_key": "141048", "item1": "...", "item2": "..."  },
-{ "kit_key": "12096", "proto_key": "141048", "item1": "...", "item2": "..."  },
-{ "kit_key": "06120", "proto_key": "141048", "item1": "...", "item2": "..."  },
-{ "kit_key": "09120", "proto_key": "141048", "item1": "...", "item2": "..."  },
-{ "kit_key": "12120", "proto_key": "141048", "item1": "...", "item2": "..."  },
+/* Part Numbers for BMP w/ 12' face pipe */
+{
+  "kit_key": "06096", "proto_key": "121048",
+  "desc": "With (6)-2-3/8in x 96in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "6"}
+    {"name": "Crossover Plates", "item2-q": "6"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "24"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "12"}
+},
 
-{ "kit_key": "06096", "proto_key": "u12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "09096", "proto_key": "u12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "12096", "proto_key": "u12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "06120", "proto_key": "u12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "09120", "proto_key": "u12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "12120", "proto_key": "u12k", "item1": "...", "item2": "..."  },
+{
+  "kit_key": "09096", "proto_key": "121048",
+  "desc": "With (9)-2-3/8in x 96in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "18"}
+    {"name": "Crossover Plates", "item2-q": "9"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "30"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "18"}
+},
 
-{ "kit_key": "06096", "proto_key": "12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "09096", "proto_key": "12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "12096", "proto_key": "12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "06120", "proto_key": "12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "09120", "proto_key": "12k", "item1": "...", "item2": "..."  },
-{ "kit_key": "12120", "proto_key": "12k", "item1": "...", "item2": "..."  },
+{
+  "kit_key": "12096", "proto_key": "121048",
+  "desc": "With (12)-2-3/8in x 96in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "12"}
+    {"name": "Crossover Plates", "item2-q": "36"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "36"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "24"}
+ },
+
+{
+  "kit_key": "06120", "proto_key": "121048",
+  "desc": "With (6)-2-3/8in x 120in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "6"}
+    {"name": "Crossover Plates", "item2-q": "36"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "24"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "12"}
+},
+
+{
+  "kit_key": "09120", "proto_key": "121048",
+  "desc": "With (9)-2-3/8in x 120in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "9"}
+    {"name": "Crossover Plates", "item2-q": "9"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "30"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "18"}
+},
+
+{
+  "kit_key": "12120", "proto_key": "121048",
+  "desc": "With (12)-2-3/8in x 120in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "12"}
+    {"name": "Crossover Plates", "item2-q": "12"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "36"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "24"}
+},
+
+
+/* Part Numbers for BMP w/ 14' face pipe */
+{
+  "kit_key": "06096", "proto_key": "141048",
+  "desc": "With (6)-2-3/8in x 96in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "6"}
+    {"name": "Crossover Plates", "item2-q": "6"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "24"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "12"}
+},
+
+{
+  "kit_key": "09096", "proto_key": "141048",
+  "desc": "With (9)-2-3/8in x 96in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "18"}
+    {"name": "Crossover Plates", "item2-q": "9"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "30"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "18"}
+},
+
+{
+  "kit_key": "12096", "proto_key": "141048",
+  "desc": "With (12)-2-3/8in x 96in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "12"}
+    {"name": "Crossover Plates", "item2-q": "36"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "36"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "24"}
+ },
+
+{
+  "kit_key": "06120", "proto_key": "141048",
+  "desc": "With (6)-2-3/8in x 120in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "6"}
+    {"name": "Crossover Plates", "item2-q": "36"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "24"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "12"}
+},
+
+{
+  "kit_key": "09120", "proto_key": "141048",
+  "desc": "With (9)-2-3/8in x 120in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "9"}
+    {"name": "Crossover Plates", "item2-q": "9"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "30"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "18"}
+},
+
+{
+  "kit_key": "12120", "proto_key": "141048",
+  "desc": "With (12)-2-3/8in x 120in Antenna Mounting Kits",
+  "items":
+    {"name": "2-1/2in Antenna Pipe", "item1-q": "12"}
+    {"name": "Crossover Plates", "item2-q": "12"}
+    {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "36"}
+    {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "24"}
+},
+
+
+/* Part Numbers for BVM Universal */
+/* Can I use the same proto_key for each type here? */
+{
+  "kit_key": "06096", "proto_key": "u12k",
+  "items":
+    {"name": "2-1/2in x 96in Antenna Pipe", "quantity": "6" }
+    {"name": "2-1/2in U-bolts", "quantity": "12" }
+},
+
+{ "kit_key": "09096", "proto_key": "u12k",
+  "items":
+    {"name": "2-1/2in x 96in Antenna Pipe", "quantity": "9" }
+    {"name": "2-1/2in U-bolts", "quantity": "18" }
+},
+
+{ "kit_key": "12096", "proto_key": "u12k",
+  "items":
+    {"name": "2-1/2in x 96in Antenna Pipe", "quantity": "12" }
+    {"name": "2-1/2in U-bolts", "quantity": "24" }
+},
+
+{ "kit_key": "06120", "proto_key": "u12k",
+  "items":
+    {"name": "2-1/2in x 120in Antenna Pipe", "quantity": "6" }
+    {"name": "2-1/2in U-bolts", "quantity": "12" }
+},
+
+{ "kit_key": "09120", "proto_key": "u12k",
+  "items":
+    {"name": "2-1/2in x 120in Antenna Pipe", "quantity": "9" }
+    {"name": "2-1/2in U-bolts", "quantity": "18" }
+},
+
+{ "kit_key": "12120", "proto_key": "u12k",
+  "items":
+    {"name": "2-1/2in x 120in Antenna Pipe", "quantity": "12" }
+    {"name": "2-1/2in U-bolts", "quantity": "24" }
+},
+
+
+/*** BVM ***/
+/* Part Numbers for BVM Straight Fit */
+{
+  "kit_key": "06096", "proto_key": "12k",
+  "items":
+    {"name": "2-1/2in x 96in Antenna Pipe", "quantity": "6" }
+    {"name": "2-1/2in U-bolts", "quantity": "12" }
+},
+
+{ "kit_key": "09096", "proto_key": "12k",
+  "items":
+    {"name": "2-1/2in x 96in Antenna Pipe", "quantity": "9" }
+    {"name": "2-1/2in U-bolts", "quantity": "18" }
+},
+
+{ "kit_key": "12096", "proto_key": "12k",
+  "items":
+    {"name": "2-1/2in x 96in Antenna Pipe", "quantity": "12" }
+    {"name": "2-1/2in U-bolts", "quantity": "24" }
+},
+
+{ "kit_key": "06120", "proto_key": "12k",
+  "items":
+    {"name": "2-1/2in x 120in Antenna Pipe", "quantity": "6" }
+    {"name": "2-1/2in U-bolts", "quantity": "12" }
+},
+
+{ "kit_key": "09120", "proto_key": "12k",
+  "items":
+    {"name": "2-1/2in x 120in Antenna Pipe", "quantity": "9" }
+    {"name": "2-1/2in U-bolts", "quantity": "18" }
+},
+
+{ "kit_key": "12120", "proto_key": "12k",
+  "items":
+    {"name": "2-1/2in x 120in Antenna Pipe", "quantity": "12" }
+    {"name": "2-1/2in U-bolts", "quantity": "24" }
+},
 
 
 /*  Example of searched and returned objects:  */
 /*  Searched p#: BMP-121048-06096  */
 
+/* FB structure
+FB Database
+    key
+    item_key
+    kit_key
+*/
+
 /*  The prototype  */
-{ "key": "bmp", "base-descrip": "...", "proto_key": true },
+{
+  "key": "bmp",
+  "base-desc": "Universal Monopole Platform with ",
+  "proto_key": true
+}
+  /* need to break out into another items dir */
+  /* each item needs proto_key, item_key and kit_key */
+  /* give the item_key and proto_key a value of 0 if they aren't being used to index on */
+
+
+  {"name": "Platform Weldment", "quantity": "3" }
+  {"name": "Ringmount Weldment", "quantity": "3"}
+  {"name": "5/8in x 42in  Threaded Rods", "quantity": "9"}
+  {"name": "42in Monopole Arms", "quantity": "3"}
+  {"name": "Monopole Splice Plate", "quantity": "3"}
+  {"name": "Ringmount Pivot Bracket", "quantity": "6"}
+  {"name": "3/4in Bolt Kits", "quantity": "12"}
+  {"name": "5/8in Bolt Kits", "quantity": "12"}
+  {"name": "1/2in x 18in Threaded Rods", "quantity": "12"}
+
 
 /*  Chained to prototype, will add to base description, etc.  */
-{ "item_key":"121048", "proto_key": "bmp", "name": "", "quantity": "" },
+{
+  "item_key":"121048", "desc": "12' Face Pipe. ", "proto_key": "bmp"
+},
+
+
+  {"name": "3-1/2in x 12' Galv. Pipe", "quantity": "3"}
 
 /*  Chained to item_key, will add to base description, etc.  */
-{ "kit_key": "06096", "proto_key": "bmp", "item1": "...", "item2": "..."  },
+{
+  "kit_key": "06096", "proto_key": "121048",
+  "desc": "With (6)-2-3/8in x 96in Antenna Mounting Kits"
+}
+
+  {"name": "2-1/2in Antenna Pipe", "item1-q": "6"}
+  {"name": "Crossover Plates", "item2-q": "6"}
+  {"name": "1/2in x 3-1/2in U-bolts", "item2-q": "24"}
+  {"name": "1/2in x 2-1/2in U-bolts", "item2-q": "12"}
