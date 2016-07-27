@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="styles/main.css"></head>
 <body ng-app="FECAP">
 
-  <!-- <div ng-include="'partials/nav-partial.html'">
-  </div> -->
+  <!--  Includes navbar on all views  -->
+  <div ng-include="'partials/navbar.html'"></div>
 
   <div class="container" ng-view></div>
 
@@ -29,7 +29,9 @@
 
 
 <!-- Controller Links  -->
+<script src="app/controllers/NavbarCtrl.js"></script>
 <script src="app/controllers/HomeViewCtrl.js"></script>
+<script src="app/controllers/CustViewCtrl.js"></script>
 
 <!-- Auth Links  -->
 

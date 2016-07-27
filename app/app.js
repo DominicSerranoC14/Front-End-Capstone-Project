@@ -10,6 +10,10 @@ app.config(function($routeProvider) {
     templateUrl: 'partials/home-view.html',
     controller: 'HomeViewCtrl'
   }).
+  when('/view/customer', {
+    templateUrl: 'partials/customer-view.html',
+    controller: 'CustViewCtrl'
+  }).
   otherwise('/home');
 
 });//End app.config
