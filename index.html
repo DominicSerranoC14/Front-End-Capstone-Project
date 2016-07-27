@@ -7,15 +7,12 @@
   <link rel="stylesheet" type="text/css" href="lib/node_modules/materialize-css/dist/css/materialize.min.css">
  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css"></head>
-<body ng-app="Pinterest">
+<body ng-app="FECAP">
 
-  <div ng-include="'partials/nav-partial.html'">
-  </div>
+  <!-- <div ng-include="'partials/nav-partial.html'">
+  </div> -->
 
-  <div class="container" ng-view>
-    <h1>how very pinteresting</h1>
-
-  </div>
+  <div class="container" ng-view></div>
 
 <!-- Third Party Links  -->
 <script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
@@ -29,22 +26,12 @@
 <script src="app/values/FirebaseCreds.js"></script>
 
 <!-- Factory Links  -->
-<script src="app/factories/AuthFactory.js"></script>
-<script src="app/factories/BoardFactory.js"></script>
-<script src="app/factories/PinFactory.js"></script>
 
 
 <!-- Controller Links  -->
-<script src="app/controllers/BoardCtrl.js"></script>
-<script src="app/controllers/LoginCtrl.js"></script>
-<script src="app/controllers/NavCtrl.js"></script>
-<script src="app/controllers/NewBoardCtrl.js"></script>
-<script src="app/controllers/NewPinCtrl.js"></script>
-<script src="app/controllers/PinCtrl.js"></script>
-
+<script src="app/controllers/HomeViewCtrl.js"></script>
 
 <!-- Auth Links  -->
-<script src="app/loginGoogle/loginGoogle.js"></script>
 
 </body>
 </html>
