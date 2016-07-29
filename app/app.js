@@ -1,9 +1,20 @@
 "use strict";
 
 //Set angular module
-var app = angular.module('FECAP', ['ngRoute', 'ngMaterial']);
+var app = angular.module('FECAP', ['ngRoute', 'ngMaterial'])
+.constant('FirebaseURL', "https://pinkey-brain.firebaseio.com");
 
-app.config(function($routeProvider) {
+
+app.config(function($routeProvider, FBCreds) {
+
+  let authConfig = {
+    apiKey: FBCreds.apiKey,
+    authDomain: FBCreds.authDomain,
+    databaseURL: FBCreds.databaseURL,
+    storageBucket: FBCreds.storageBucket
+  };
+  firebase.initializeApp(authConfig);
+
 
   $routeProvider.
   when('/home', {

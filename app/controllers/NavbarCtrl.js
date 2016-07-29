@@ -1,7 +1,7 @@
 'use strict';
 
 //Controller for the Navbar partial, will be ng-included in Index
-app.controller('NavbarCtrl', function($scope, $location, $mdDialog) {
+app.controller('NavbarCtrl', function($scope, $location, $mdDialog, AuthFactory) {
 
 
   //jQuery that activates drop down nav bar feature on page load
@@ -17,9 +17,9 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog) {
   $scope.showConfirm = function(eventDiv) {
     // Shows the contents of the dialog
     let confirm = $mdDialog.confirm()
-          .title('Are you sure you want to leave this page?')
+          .title('Are you sure you want to sign out?')
           .targetEvent(eventDiv)
-          .ok('Leave Page')
+          .ok('Sign Out')
           .cancel('Cancel');
     $mdDialog.show(confirm).then(function() {
       //Insert log out function here
@@ -27,14 +27,18 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog) {
       $mdDialog.confirm().
         ok(console.log('works'),
         $location.url("/login"));
+        AuthFactory.signOut();
       });
   };
 
-
-  $scope.message = 'Hello';
-
-
+  //****************
   //On page load display current user once Auth is working
+  //****************
+
+  // logout function
+  $scope.logout = function() {
+  };
+
 
 
 });//End NavbarCtrl

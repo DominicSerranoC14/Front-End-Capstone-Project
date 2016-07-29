@@ -12,7 +12,8 @@
       "after": false,
       "afterEach": false,
     "jasmine": false,
-    "app": true
+    "app": true,
+    "firebase": true
   },
   "jasmine": true
 }
