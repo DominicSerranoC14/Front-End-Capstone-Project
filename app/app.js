@@ -1,8 +1,8 @@
 "use strict";
 
 //Set angular module
-var app = angular.module('FECAP', ['ngRoute', 'ngMaterial'])
-.constant('FirebaseURL', "https://pinkey-brain.firebaseio.com");
+const app = angular.module('FECAP', ['ngRoute', 'ngMaterial'])
+.constant('FirebaseURL', "https://front-end-capstone.firebaseio.com");
 
 
 app.config(function($routeProvider, FBCreds) {
