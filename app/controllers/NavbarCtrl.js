@@ -11,10 +11,11 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog, AuthFactory)
 
 
   //Trying to disable navbar when a user is not signed in
-  $scope.disableNavbar = false;
-  if ( $location.url() === "/login" ) {
-    $scope.disableNav = true;
-  }
+  // if ( $location.url() === "/login" ) {
+  //   $scope.disableNavbar = true;
+  // } else {
+  //   $scope.disableNavbar = false;
+  // }
 
 
   //////////////
@@ -41,11 +42,6 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog, AuthFactory)
   //****************
   //On page load display current user once Auth is working
   //****************
-
-  // logout function
-  $scope.logout = function() {
-  };
-
 
 
 });//End NavbarCtrl

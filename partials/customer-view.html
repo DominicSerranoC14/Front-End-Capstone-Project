@@ -5,6 +5,27 @@
   <h1 class="center">Customers</h1>
 
 
+  <!--  Angular-Material fab toolbar  -->
+  <md-fab-speed-dial class="right" md-open="speedDial.isOpen" md-direction="down" ng-class="speedDial.mode">
+        <md-fab-trigger>
+          <md-button class="md-fab md-warn">
+            <md-icon class="material-icons">list</md-icon>
+          </md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+          <md-button class="md-fab md-raised md-mini">
+            <md-icon class="material-icons green-text" ng-click="showCreateCustomer($event)">add</md-icon>
+          </md-button>
+          <md-button class="md-fab md-raised md-mini">
+            <md-icon class="material-icons red-text">delete</md-icon>
+          </md-button>
+          <!-- <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+            <md-icon class="material-icons"></md-icon>
+          </md-button> -->
+        </md-fab-actions>
+  </md-fab-speed-dial>
+
+
   <ul class="collection">
    <li class="collection-item avatar">
      <i class="material-icons circle">folder</i>
@@ -12,7 +33,7 @@
      <p>First Line <br>
         Second Line
      </p>
-     <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+     <a ng-click="" class="secondary-content"><i class="material-icons">delete</i></a>
    </li>
    <li class="collection-item avatar">
      <i class="material-icons circle green">insert_chart</i>
@@ -20,7 +41,7 @@
      <p>First Line <br>
         Second Line
      </p>
-     <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+     <a ng-click="" class="secondary-content"><i class="material-icons">delete</i></a>
    </li>
    <li class="collection-item avatar">
      <i class="material-icons circle red">play_arrow</i>
@@ -28,10 +49,48 @@
      <p>First Line <br>
         Second Line
      </p>
-     <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+     <a ng-click="" class="secondary-content"><i class="material-icons">delete</i></a>
    </li>
 
  </ul>
+
+
+ <!-- <div style="visibility: hidden">
+  <div class="md-dialog-container" id="create-customer-dialog">
+    <md-dialog>
+      <div layout-margin>
+        <h4 layout-margin>Create Customer</h4>
+
+        <div class="input-field" layout-margin>
+          <input type="text">
+          <label>Name</label>
+        </div>
+
+        <div class="input-field" layout-margin>
+          <input type="text">
+          <label>Company</label>
+        </div>
+
+        <div class="input-field" layout-margin>
+          <input type="text">
+          <label>Email</label>
+        </div>
+
+        <div class="input-field" layout-margin>
+          <input type="text">
+          <label>Phone</label>
+        </div>
+
+        <div class="row">
+          <md-button ng-click="hideCreateCustomer()">Cancel</md-button>
+          <md-button>Create</md-button>
+        </div>
+
+      </div>
+
+    </md-dialog>
+  </div>
+</div> -->
 
 
 </div>
