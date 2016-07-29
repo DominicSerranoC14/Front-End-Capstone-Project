@@ -10,6 +10,13 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog, AuthFactory)
   });
 
 
+  //Trying to disable navbar when a user is not signed in
+  $scope.disableNavbar = false;
+  if ( $location.url() === "/login" ) {
+    $scope.disableNav = true;
+  }
+
+
   //////////////
   // Angular for the dialog box confirming page leave on logout button press
   // $mdDialog must be injected

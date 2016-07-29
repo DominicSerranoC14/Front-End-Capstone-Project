@@ -9,12 +9,12 @@
     <li><a href="#!">Items</a></li>
   </ul>
   <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper grey darken-2">
       <a href="#!" class="center brand-logo">FECAP</a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right hide-on-sm-and-down">
         <!-- Dropdown Trigger -->
-        <li><a id="dropdown-button" href="#!" data-activates="dropdown1">Shortcut<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a ng-click="showConfirm($event)">Logout</a></li>
+        <li><a id="dropdown-button" href="#!" data-activates="dropdown1"  ng-hide="disableNavbar">Shortcut<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a ng-click="showConfirm($event)" ng-hide="disableNavbar">Logout</a></li>
       </ul>
     </div>
   </nav>
