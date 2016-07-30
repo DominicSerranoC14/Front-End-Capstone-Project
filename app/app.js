@@ -29,6 +29,14 @@ app.config(function($routeProvider, FBCreds) {
     templateUrl: 'partials/login-view.html',
     controller: 'LoginCtrl'
   }).
+  when('/view/order', {
+    templateUrl: 'partials/order-view.html',
+    controller: 'OrderCtrl'
+  }).
+  when('/view/customer/detail/:customerId', {
+    templateUrl: 'partials/customer-detail.html',
+    controller: 'CustomerDetailCtrl'
+  }).
   otherwise('/home');
 
 });//End app.config
