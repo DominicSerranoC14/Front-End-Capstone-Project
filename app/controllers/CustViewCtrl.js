@@ -8,8 +8,6 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   $rootScope.customerList.customers = [];
 
 
-
-
   //Code for toolbar on home-view.html to open and scale
   $scope.speedDial = {};
   $scope.speedDial.isOpen = false;
@@ -24,6 +22,8 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   };
 
 
+  ///////////////////////////////////////////////
+  // Function that deletes customer from DB and page
   $scope.deleteCustomer = function(customerId) {
 
     CustomerFactory.deleteCustomer(customerId)
@@ -44,10 +44,11 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   .then(function(customerCollection) {
     $rootScope.customerList.customers = customerCollection;
   });// End CustomerFactory function
+  ////////////////////////////////////////////////
 
 
-  //Start add customer functionality
-
+  ///////////////////////////////////////////////
+  //Start create new customer functionality
   $scope.newCustomer = {
     name : "",
     company : "",
@@ -69,18 +70,15 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
     //put customer to DB
     CustomerFactory.addCustomer($scope.newCustomer)
     .then(function() {
-      console.log("1. Test add customer");
       CustomerFactory.getCustomer(AuthFactory.getUser())
       .then(function(customerCollection) {
         $rootScope.customerList.customers = customerCollection;
-        console.log("Test customerList", $rootScope.customerList.customers);
       });
     });
 
     $mdDialog.hide();
-    console.log("0.");
   };
-
+  ///////////////////////////////////////////////////
 
 
 

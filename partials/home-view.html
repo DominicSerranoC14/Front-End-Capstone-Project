@@ -31,10 +31,19 @@
 
 
     <ul class="collapsible popout collection" data-collapsible="accordion">
+
+      <!--  Customer Shortcut tab  -->
+      <!--  Insert favorited cusomters here?  -->
       <li>
-        <div class="collapsible-header"><i class="material-icons">face</i>Customers</div>
-        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="collapsible-header">
+          <i class="material-icons">face</i>Customers
+        </div>
+          <div class="collapsible-body" ng-repeat="customer in customerShortcut">
+            <a href="#/view/customer/detail/{{customer.id}}">
+            <p>{{customer.name}}</p></a>
+          </div>
       </li>
+
       <li>
         <div class="collapsible-header"><i class="material-icons">list</i>Orders</div>
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
