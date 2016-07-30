@@ -43,7 +43,23 @@ app.factory('CustomerFactory', function($q, $http, FirebaseURL) {
     });
   };
 
+  ////////////////////////////////////////////////////////
+  // Deletes customer to DB from view/customer/
+  let deleteCustomer = function (customerId) {
+  return $q(function(resolve, reject) {
+    $http.delete(
+      `${FirebaseURL}/customer/${customerId}.json`
+    )
+    .success(function() {
+      resolve();
+    })
+    .error(function(error) {
+      reject(error);
+    });
+  });
+};
+
 
   //Export functions to controller's here
-  return { addCustomer , getCustomer };
+  return { addCustomer , getCustomer, deleteCustomer };
 });

@@ -26,7 +26,7 @@
   </md-fab-speed-dial>
 
 
-  <ul class="collection" ng-repeat="customer in customerList">
+  <ul class="collection" ng-repeat="customer in customerList.customers">
 
    <li class="collection-item avatar">
      <i class="material-icons circle">face</i>
@@ -35,7 +35,7 @@
         Email: {{customer.email}} <br>
         Phone: {{customer.phone}}
      </p>
-     <a ng-click="" class="secondary-content"><i class="material-icons">delete</i></a>
+     <a class="secondary-content"><i ng-click="deleteCustomer(customer.id)" class="material-icons">delete</i></a>
    </li>
 
  </ul>
