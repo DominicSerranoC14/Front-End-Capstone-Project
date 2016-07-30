@@ -43,23 +43,42 @@ app.factory('CustomerFactory', function($q, $http, FirebaseURL) {
     });
   };
 
+
   ////////////////////////////////////////////////////////
   // Deletes customer to DB from view/customer/
   let deleteCustomer = function (customerId) {
-  return $q(function(resolve, reject) {
-    $http.delete(
-      `${FirebaseURL}/customer/${customerId}.json`
-    )
-    .success(function() {
-      resolve();
-    })
-    .error(function(error) {
-      reject(error);
+    return $q(function(resolve, reject) {
+      $http.delete(
+        `${FirebaseURL}/customer/${customerId}.json`
+      )
+      .success(function() {
+        resolve();
+      })
+      .error(function(error) {
+        reject(error);
+      });
     });
-  });
-};
+  };
+
+
+  //////////////////////////////////////////////////////
+  // Edits a currentely existing customer
+  let editCustomer = function(customerId, customerObj) {
+   return $q(function(resolve, reject) {
+     $http.patch(
+       `${FirebaseURL}/customer/${customerId}.json`,
+         JSON.stringify(customerObj)
+     )
+     .success(function(message) {
+       resolve(message);
+     })
+     .error(function(error) {
+       reject(error);
+     });
+   });
+  };
 
 
   //Export functions to controller's here
-  return { addCustomer , getCustomer, deleteCustomer };
+  return { addCustomer , getCustomer, deleteCustomer, editCustomer };
 });
