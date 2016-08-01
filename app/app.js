@@ -31,12 +31,16 @@ app.config(function($routeProvider, FBCreds) {
   }).
   when('/view/order', {
     templateUrl: 'partials/order-view.html',
-    controller: 'OrderCtrl'
+    controller: 'OrderViewCtrl'
+  }).
+  when('/view/order/template', {
+    templateUrl: 'partials/order-template.html',
+    controller: 'OrderTemplateCtrl'
   }).
   when('/view/customer/detail/:customerId', {
     templateUrl: 'partials/customer-detail.html',
     controller: 'CustomerDetailCtrl'
   }).
-  otherwise('/home');
+  otherwise('/login');
 
 });//End app.config
