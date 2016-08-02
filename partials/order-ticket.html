@@ -22,9 +22,10 @@
     <li class="col s4 push-s1">{{each.itemDescription}}</li>
     <li class="col s4 push-s1">{{each.itemQuantity}}</li>
   </ul><hr>
-</div><br><br><br>
+</div><br><br><br><br>
 
 <div class="row">
-  <a class="waves-effect btn indigo col s2 offset-s4">Edit</a>
+  <a class="waves-effect btn indigo col s2 offset-s3">Edit</a>
   <a class="waves-effect btn green col s2">Ship</a>
+  <a ng-click="deleteOrder()" class="waves-effect btn red col s2">Delete</a>
 </div>

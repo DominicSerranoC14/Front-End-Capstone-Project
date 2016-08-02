@@ -20,13 +20,12 @@
      <div class="col s6" ng-repeat="each in customerOrderList">
        <div class="oRderS card small card-panel grey">
          <div>
-           <span ng-click="" class="material-icons right red-text">delete</span>
            <a href="#/view/order/ticket/{{each.orderId}}">
-           <p>Name: {{each.customerName}}</p>
-           <p>Company: {{each.customerCompany}}</p>
-           <p>Sales Order Number: {{each.salesNumber}}</p>
-           <p>Date: {{each.date}}</p>
-           </a>
+           <span class="material-icons right black-text">remove_red_eye</span></a>
+           <p class="indigo-text">Name: {{each.customerName}}</p>
+           <p class="indigo-text">Company: {{each.customerCompany}}</p>
+           <p class="indigo-text">Sales Order Number: {{each.salesNumber}}</p>
+           <p class="indigo-text">Date: {{each.date}}</p>
          </div>
        </div>
      </div>

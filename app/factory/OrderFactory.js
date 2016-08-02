@@ -112,8 +112,45 @@ app.factory('OrderFactory', function($q, $http, FirebaseURL) {
   ///////////////////////////////////////////////////
 
 
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
+
+  //All order deleting functionality goes here
+  let deleteOrder = function (orderId) {
+
+    return $q(function(resolve, reject) {
+      $http.delete(
+        `${FirebaseURL}/order/${orderId}.json`
+      )
+      .success(function() {
+        resolve();
+      })
+      .error(function(error) {
+        reject(error);
+      });
+    });
+  };
+
+  //Deletes the items associated with the order number
+  let deleteOrderItemList = function (itemId) {
+
+    return $q(function(resolve, reject) {
+      $http.delete(
+        `${FirebaseURL}/order-item/${itemId}.json`
+      )
+      .success(function() {
+        resolve();
+      })
+      .error(function(error) {
+        reject(error);
+      });
+    });
+  };
+  ///////////////////////////////////////////////////
+
+
   //Export functions here
-  return { addOrder, addItemToOrder, getCustomerOrder, getOrderItem, getCustomerOrderTicket };
+  return { addOrder, addItemToOrder, getCustomerOrder, getOrderItem, getCustomerOrderTicket, deleteOrder, deleteOrderItemList };
 
 
 });//End of OrderFactory

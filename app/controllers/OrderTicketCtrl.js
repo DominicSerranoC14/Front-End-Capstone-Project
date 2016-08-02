@@ -3,7 +3,7 @@
 //Controller for the order-ticket view
 app.controller('OrderTicketCtrl', function( $scope, $routeParams, OrderFactory ) {
 
-  //Prints order object
+  //Prints order object on view
   OrderFactory.getCustomerOrderTicket($routeParams.orderId)
   .then(function(orderObj) {
     console.log("Test orderObj", orderObj );
@@ -17,8 +17,26 @@ app.controller('OrderTicketCtrl', function( $scope, $routeParams, OrderFactory )
       $scope.itemList = orderItemCollection;
 
     });
-
   });
+
+
+  //Function that deletes each order and related items from FB
+  $scope.deleteOrder = function() {
+
+    OrderFactory.deleteOrder($routeParams.orderId)
+    .then(function(returnObj) {
+
+    });
+
+    angular.forEach($scope.itemList , function(each) {
+      OrderFactory.deleteOrderItemList(each.itemId)
+      .then(function(returnObj) {
+        console.log("Test items have been deleted");
+      });
+    });//End forEach loop
+
+
+  };//End deleteOrder function
 
 
 
