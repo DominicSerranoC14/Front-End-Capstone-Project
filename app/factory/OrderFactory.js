@@ -67,6 +67,22 @@ app.factory('OrderFactory', function($q, $http, FirebaseURL) {
   };
 
 
+  //Loads specific order to view order ticket partial
+  let getCustomerOrderTicket = function(orderId) {
+
+    return $q(function(resolve, reject) {
+
+      $http.get(`${FirebaseURL}/order/${orderId}.json`)
+      .success(function(orderObject) {
+        resolve(orderObject);
+      })
+      .error(function(error){
+        reject(error);
+      });
+    });
+  };
+
+
   //Grabs each item that is on each order by searching for orderKey
   let getOrderItem = function(orderId) {
 
@@ -97,7 +113,7 @@ app.factory('OrderFactory', function($q, $http, FirebaseURL) {
 
 
   //Export functions here
-  return { addOrder, addItemToOrder, getCustomerOrder, getOrderItem };
+  return { addOrder, addItemToOrder, getCustomerOrder, getOrderItem, getCustomerOrderTicket };
 
 
 });//End of OrderFactory

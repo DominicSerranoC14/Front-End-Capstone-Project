@@ -37,6 +37,10 @@ app.config(function($routeProvider, FBCreds) {
     templateUrl: 'partials/order-template.html',
     controller: 'OrderTemplateCtrl'
   }).
+  when('/view/order/ticket/:orderId', {
+    templateUrl: 'partials/order-ticket.html',
+    controller: 'OrderTicketCtrl'
+  }).
   when('/view/customer/detail/:customerId', {
     templateUrl: 'partials/customer-detail.html',
     controller: 'CustomerDetailCtrl'

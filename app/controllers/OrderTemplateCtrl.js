@@ -75,6 +75,7 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
     $scope.newOrderObj.customerName = $scope.currentCustomer.name;
     $scope.newOrderObj.customerCompany = $scope.currentCustomer.company;
     $scope.newOrderObj.date = new Date();
+    $scope.newOrderObj.salesNumber = Math.floor(Math.random() * (20000 - 10000) + 10000);
 
 
     OrderFactory.addOrder($scope.newOrderObj)

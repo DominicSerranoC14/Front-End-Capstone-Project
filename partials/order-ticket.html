@@ -1,0 +1,30 @@
+<!-- cusotmer company, name date -->
+<!--  each item info, push to array  -->
+
+<h4 class="center">Order Ticket</h4>
+<h5 class="right">Sales Number: {{customerOrder.salesNumber}}</h5>
+
+<!--  Customer Address  -->
+<h4>Ship To:</h4>
+<h5>{{customerOrder.customerName}}</h5>
+<h5>{{customerOrder.customerCompany}}</h5>
+<hr><br>
+
+<div class="row">
+  <h5 class="col s4 push-s1">Part Number</h5>
+  <h5 class="col s4 push-s1">Weight(lbs)</h5>
+  <h5 class="col s4 push-s1">Quantitiy</h5>
+</div>
+
+<div class="row" ng-repeat="each in itemList">
+  <ul>
+    <li class="col s4 push-s1">{{each.itemNumber}}</li>
+    <li class="col s4 push-s1">{{each.itemDescription}}</li>
+    <li class="col s4 push-s1">{{each.itemQuantity}}</li>
+  </ul><hr>
+</div><br><br><br>
+
+<div class="row">
+  <a class="waves-effect btn indigo col s2 offset-s4">Edit</a>
+  <a class="waves-effect btn green col s2">Ship</a>
+</div>

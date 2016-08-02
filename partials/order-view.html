@@ -18,13 +18,13 @@
   <!--  Repeat each order here  -->
   <div class="row">
      <div class="col s6" ng-repeat="each in customerOrderList">
-       <div class="oRderS card-panel grey">
+       <div class="oRderS card small card-panel grey">
          <div>
            <span ng-click="" class="material-icons right red-text">delete</span>
-           <a href="#">
+           <a href="#/view/order/ticket/{{each.orderId}}">
            <p>Name: {{each.customerName}}</p>
            <p>Company: {{each.customerCompany}}</p>
-           <p>Order Number: {{each.orderId}}</p>
+           <p>Sales Order Number: {{each.salesNumber}}</p>
            <p>Date: {{each.date}}</p>
            </a>
          </div>
