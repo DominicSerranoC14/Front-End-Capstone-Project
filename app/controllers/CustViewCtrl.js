@@ -38,7 +38,7 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
 
   };//Delete Customer function
 
-
+  //////////////////////////////////////////////////
   //Shows user related customers on page load
   CustomerFactory.getCustomer(AuthFactory.getUser())
   .then(function(customerCollection) {

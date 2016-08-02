@@ -10,15 +10,16 @@
       </div>
     </form>
   </div>
+</nav>
 
-  <div class="center">
+  <div layout-margin class="center">
     <a href="#/view/order/template" class="waves-effect waves-light btn indigo">Create Order</a>
   </div>
 
   <!--  Repeat each order here  -->
   <div class="row">
      <div class="col s6" ng-repeat="each in customerOrderList">
-       <div class="oRderS card small card-panel grey">
+       <div class="card-panel grey">
          <div>
            <a href="#/view/order/ticket/{{each.orderId}}">
            <span class="material-icons right black-text">remove_red_eye</span></a>
@@ -30,5 +31,3 @@
        </div>
      </div>
    </div>
-
-</nav>

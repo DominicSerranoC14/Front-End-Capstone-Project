@@ -1,11 +1,12 @@
 'use strict';
 
-app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, CustomerFactory, AuthFactory) {
+app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, CustomerFactory, OrderFactory, AuthFactory) {
 
   //In this view, the customer selected will be displayed by filtering through the users customers and returning the matching customer id
   $scope.customer = [];
 
-
+  ///////////////////////////////////////////////////
+  //Prints the selected customers details
   let populateSelectedCustomer = function() {
     CustomerFactory.getCustomer(AuthFactory.getUser())
     .then(function(customerCollection) {
@@ -17,6 +18,24 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       })[0];
     });
   }; populateSelectedCustomer();
+
+
+  //Loads the current customers related orders
+  let populateSelectedCustomerOrder = function() {
+
+    OrderFactory.getCustomerOrder()
+    .then(function(orderCollection) {
+
+      $scope.selectedCustomerOrderList = orderCollection.filter(function(order) {
+        return order.customerId === $routeParams.customerId;
+      });
+
+    });
+
+  }; populateSelectedCustomerOrder();
+
+  ///////////////////////////////////////////////////
+
 
   /////////////////////////////////
   //Javascript for showing hidden dialogs

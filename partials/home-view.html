@@ -1,35 +1,32 @@
 <div>
 
-  <div>
+  <h3 class="center">Home</h3>
 
-    <h3 class="center">Home</h3>
+</div>
 
-  </div>
 
-  <div>
+<div class="row">
 
+  <div class="right col s1 push-s1">
     <!--  Angular-Material fab toolbar  -->
     <md-fab-speed-dial class="right" md-open="speedDial.isOpen" md-direction="down" ng-class="speedDial.mode">
-          <md-fab-trigger>
-            <md-button class="md-fab md-warn">
-              <md-icon class="material-icons">list</md-icon>
-            </md-button>
-          </md-fab-trigger>
-          <md-fab-actions>
-            <md-button class="md-fab md-raised md-mini">
-              <md-icon class="material-icons green-text">add</md-icon>
-            </md-button>
-            <md-button class="md-fab md-raised md-mini">
-              <md-icon class="material-icons red-text">delete</md-icon>
-            </md-button>
-            <!--  Keep here incase another fab dropdown button is needed  -->
-            <!-- <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
-              <md-icon class="material-icons"></md-icon>
-            </md-button> -->
-          </md-fab-actions>
+      <md-fab-trigger>
+        <md-button class="md-fab md-warn">
+          <md-icon class="material-icons">list</md-icon>
+        </md-button>
+      </md-fab-trigger>
+      <md-fab-actions>
+        <md-button class="md-fab md-raised md-mini">
+          <md-icon class="material-icons green-text">add</md-icon>
+        </md-button>
+        <md-button class="md-fab md-raised md-mini">
+          <md-icon class="material-icons red-text">delete</md-icon>
+        </md-button>
+      </md-fab-actions>
     </md-fab-speed-dial>
+  </div>
 
-
+  <div class="col s11">
     <ul class="collapsible popout collection" data-collapsible="accordion">
 
       <!--  Customer Shortcut tab  -->
@@ -53,7 +50,6 @@
         <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
       </li>
     </ul>
-
   </div>
 
 </div>

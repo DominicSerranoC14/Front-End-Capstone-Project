@@ -1,41 +1,42 @@
 <!--  This view will show current customers and will also give Admin users the ability to create and delete a customer  -->
 
-<div>
 
   <h1 class="center">Customers</h1>
 
+<div class="row">
 
-  <!--  Angular-Material fab toolbar  -->
-  <md-fab-speed-dial class="right" md-open="speedDial.isOpen" md-direction="down" ng-class="speedDial.mode">
-        <md-fab-trigger>
-          <md-button class="md-fab md-warn">
-            <md-icon class="material-icons">list</md-icon>
-          </md-button>
-        </md-fab-trigger>
-        <md-fab-actions>
-          <md-button class="md-fab md-raised md-mini">
-            <md-icon class="material-icons green-text" ng-click="showCreateCustomer($event)">add</md-icon>
-          </md-button>
-          <md-button class="md-fab md-raised md-mini">
-            <md-icon class="material-icons red-text">delete</md-icon>
-          </md-button>
-        </md-fab-actions>
-  </md-fab-speed-dial>
+  <div class="right col s1 push-s1">
+    <!--  Angular-Material fab toolbar  -->
+    <md-fab-speed-dial class="right" md-open="speedDial.isOpen" md-direction="down" ng-class="speedDial.mode">
+      <md-fab-trigger>
+        <md-button class="md-fab md-warn">
+          <md-icon class="material-icons">list</md-icon>
+        </md-button>
+      </md-fab-trigger>
+      <md-fab-actions>
+        <md-button class="md-fab md-raised md-mini">
+          <md-icon class="material-icons green-text" ng-click="showCreateCustomer($event)">add</md-icon>
+        </md-button>
+        <md-button class="md-fab md-raised md-mini">
+          <md-icon class="material-icons red-text">delete</md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-fab-speed-dial>
+  </div>
 
+  <div class="col s11">
+    <ul class="collection" ng-repeat="customer in customerList.customers">
 
-  <ul class="collection" ng-repeat="customer in customerList.customers">
-
-   <li class="collection-item avatar">
-     <i class="material-icons circle">face</i>
-     <span class="title"><a href="#/view/customer/detail/{{customer.id}}">{{customer.name}}</span>
-     <p> Company: {{customer.company}} <br>
-        Email: {{customer.email}} <br>
-        Phone: {{customer.phone}}
-     </p>
-     <a class="secondary-content"><i ng-click="deleteCustomer(customer.id)" class="material-icons">delete</i></a>
-   </li>
-
- </ul>
-
+     <li class="collection-item avatar">
+       <i class="material-icons circle">face</i>
+       <span class="title"><a href="#/view/customer/detail/{{customer.id}}">{{customer.name}}</span>
+       <p> Company: {{customer.company}} <br>
+          Email: {{customer.email}} <br>
+          Phone: {{customer.phone}}
+       </p>
+       <a class="secondary-content"><i ng-click="deleteCustomer(customer.id)" class="material-icons">delete</i></a>
+     </li>
+    </ul>
+  </div>
 
 </div>

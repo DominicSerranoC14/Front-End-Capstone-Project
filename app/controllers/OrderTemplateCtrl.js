@@ -95,4 +95,13 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
   };//End submitOrder function
   ////////////////////////////////////////////////////
 
+
+
+  $scope.options = [
+    'One', 'Two', 'Three'
+  ];
+
+
+
+
 });//End of OrderViewCtrl

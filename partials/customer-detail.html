@@ -17,6 +17,23 @@
  </div>
 
 
+ <!--  Repeat each order here  -->
+ <div class="row">
+    <div class="col s6" ng-repeat="each in selectedCustomerOrderList">
+      <div class="card-panel grey">
+        <div>
+          <a href="#/view/order/ticket/{{each.orderId}}">
+          <span class="material-icons right black-text">remove_red_eye</span></a>
+          <p class="indigo-text">Name: {{each.customerName}}</p>
+          <p class="indigo-text">Company: {{each.customerCompany}}</p>
+          <p class="indigo-text">Sales Order Number: {{each.salesNumber}}</p>
+          <p class="indigo-text">Date: {{each.date}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <div style="visibility: hidden">
   <div class="md-dialog-container" id="edit-customer">
       <md-dialog>
