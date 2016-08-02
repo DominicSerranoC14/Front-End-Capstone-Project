@@ -38,6 +38,7 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog, AuthFactory)
         AuthFactory.signOut();
       });
   };
+  ////////////////////////////////////////////////
 
   //****************
   //On page load display current user once Auth is working

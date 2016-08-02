@@ -3,7 +3,9 @@
 <div class="md-padding">
   <div>
     <h1 class="md-title">Ship To:</h1>
+
     <!--  Select menu for users customers  -->
+
     <div>
       <md-input-container class="md-block">
         <label>Customer</label>
@@ -24,24 +26,31 @@
         <option value="3">Distribution</option>
       </select>
       <label></label>
+    </div><br>
+
+
+    <!--  Begin item display  -->
+    <div class="row" ng-repeat="item in newOrderItemList">
+      <ul class="item-line-list">
+        <li class="col m4" type="text">{{item.itemNumber}}</li>
+        <li class="col m3" type="text">{{item.itemQuantity}}</li>
+        <li><a ng-click="" class="waves-effect waves-light btn indigo">Edit Item</a></li>
+        <li><a ng-click="" class="waves-effect waves-light btn red">Delete</a></li>
+      </ul>
     </div>
 
-  <div class="row" ng-repeat="item in newOrderObj.itemList">
-    <ul class="item-line-list">
-      <li class="col m4" type="text">{{item.itemNumber}}</li>
-      <li class="col m3" type="text">{{item.itemQuantity}}</li>
-      <li><a ng-click="" class="waves-effect waves-light btn indigo">Edit Item</a></li>
-      <li><a ng-click="" class="waves-effect waves-light btn indigo">Delete</a></li>
-    </ul>
-  </div>
+    <div class="row">
+      <ul class="item-line-list">
+        <li><input ng-model="newItem.itemNumber" class="col m4" type="text" placeholder="Enter Item"></li>
+        <li><input ng-model="newItem.itemQuantity" class="col m3" type="number" placeholder="Quantity" value=""></li>
+        <li><a ng-click="addItem()" class="waves-effect waves-light btn indigo">Save Item</a></li>
+        <li><a ng-click="clearItemInput()" class="red waves-effect waves-light btn">Cancel</a></li>
+      </ul>
+    </div><br><br><br>
 
-  <div class="row">
-    <ul class="item-line-list">
-      <li><input ng-model="newItem.itemNumber" class="col m4" type="text" placeholder="Enter Item"></li>
-      <li><input ng-model="newItem.itemQuantity" class="col m3" type="number" placeholder="Quantity" value=""></li>
-      <li><a ng-click="addItem()" class="waves-effect waves-light btn indigo">Save Item</a></li>
-      <li><a ng-click="" class="red waves-effect waves-light btn">Cancel</a></li>
-    </ul>
-  </div>
+    <div class="center">
+      <a ng-click="submitOrder()" class="green waves-effect waves-light btn">Submit</a>
+    </div>
+
   </div>
 </div>
