@@ -30,28 +30,44 @@
 
 
     <!--  Begin item display  -->
-    <div class="row" ng-repeat="item in newOrderItemList">
-      <ul class="item-line-list">
-        <li class="col m4" type="text">{{item.itemNumber}}</li>
-        <li class="col m3" type="text">{{item.itemQuantity}}</li>
-        <li><a ng-click="" class="waves-effect waves-light btn indigo disabled">Edit Item</a></li>
-        <li><a ng-click="" class="waves-effect waves-light btn red disabled">Delete</a></li>
-      </ul>
-    </div>
-
     <div class="row">
       <ul class="item-line-list">
-        <li><input ng-model="newItem.itemNumber" class="col m4" type="text" placeholder="Enter Item"></li>
+        <li><input id="user-item-input" ng-model="newItem.itemNumber" class="col m4" type="text" placeholder="Enter Item"></li>
         <li><input ng-model="newItem.itemQuantity" class="col m3" type="number" placeholder="Quantity" value=""></li>
         <li><a ng-click="addItem()" class="waves-effect waves-light btn indigo">Save Item</a></li>
         <li><a ng-click="clearItemInput()" class="red waves-effect waves-light btn">Cancel</a></li>
       </ul>
+    </div>
+
+    <div class="row" ng-repeat="item in newOrderItemList">
+      <ul class="item-line-list">
+        <li class="col m4" type="text">{{item.itemNumber}}</li>
+        <li class="col m3" type="number">{{item.itemQuantity}}</li>
+        <li><a ng-click="" class="waves-effect waves-light btn indigo disabled">Edit Item</a></li>
+        <li><a ng-click="" class="waves-effect waves-light btn red disabled">Delete</a></li>
+      </ul>
     </div><br><br><br>
+
+
 
 
     <div class="center">
       <a ng-click="submitOrder()" class="green waves-effect waves-light btn">Submit</a>
     </div>
 
+  </div>
+</div>
+
+
+<!--  Autocomplete modal  -->
+<div id="autocomplete-container" class="row hide" ng-model="autocompleteSearch">
+  <div id="autocomplete-modal" class="col s3">
+    <div showList="true" ng-click="selectItem(item)" ng-repeat="item in searchList | filter: autocompleteSearch">
+      <p style="font-size: 12px" class="left">{{item}}</p><br>
+      <p class="center">Description</p><br><hr>
+    </div>
+    <div ng-hide="showList">
+      No matches were found.
+    </div>
   </div>
 </div>

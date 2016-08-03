@@ -80,6 +80,34 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
   };//End clearItemInput function
 
 
+  //Show autocomplete and filter user input with searchList of part numbers
+  $('#user-item-input').keyup(function() {
+
+    //Show auto modal here
+    $('#autocomplete-container').removeClass('hide');
+
+    //Set search text to the user input
+    $scope.autocompleteSearch = $scope.newItem.itemNumber.toUpperCase();
+
+    //If input is blank hide modal
+    if ( $scope.autocompleteSearch === "" ) {
+      $('#autocomplete-container').addClass('hide');
+    }
+
+    // console.log("Test $scope.autocompleteSearch", $scope.autocompleteSearch.charAt(0));
+  });
+
+  $scope.showList = true;
+
+
+  //Function that selects the autocompleted text to the input value
+  $scope.selectItem = function(item) {
+    $scope.newItem.itemNumber = item;
+    $('#autocomplete-container').addClass('hide');
+  };
+  //////////////////////////////////////////////
+
+
   //Display the new item to the page and push each added item to an array in the newOrderObj
   $scope.addItem = function() {
 
