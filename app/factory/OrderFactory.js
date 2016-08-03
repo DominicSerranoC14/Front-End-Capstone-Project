@@ -145,8 +145,31 @@ app.factory('OrderFactory', function($q, $http, FirebaseURL) {
   ///////////////////////////////////////////////////
 
 
+  ///////////////////////////////////////////////////
+  // All functionality for editing order items go here
+  let editItemList = function(itemId, newItemObj) {
+   return $q(function(resolve, reject) {
+     $http.patch(
+       `${FirebaseURL}/order-item/${itemId}.json`,
+         newItemObj
+     )
+     .success(function(message) {
+       resolve(message);
+     })
+     .error(function(error) {
+       reject(error);
+     });
+   });
+  };
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
+
+
+
+
+
   //Export functions here
-  return { addOrder, addItemToOrder, getCustomerOrder, getOrderItem, getCustomerOrderTicket, deleteOrder, deleteOrderItemList };
+  return { addOrder, addItemToOrder, getCustomerOrder, getOrderItem, getCustomerOrderTicket, deleteOrder, deleteOrderItemList, editItemList };
 
 
 });//End of OrderFactory

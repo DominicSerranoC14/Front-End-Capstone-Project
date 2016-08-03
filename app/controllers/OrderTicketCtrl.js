@@ -43,4 +43,43 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
   ////////////////////////////////////////////////////////////
 
 
+  ////////////////////////////////////////////////////////////
+  // All functionality for editing an order's item goes here
+  //The displayMode will default to the order ticket where items are displayed only
+  $scope.displayMode = true;
+
+  //Shows each item in a line list edit view
+  //Also hides the edit button and shows the save button
+  $scope.editView = function() {
+    $scope.displayMode = !$scope.displayMode;
+
+    $('#edit-button').addClass('hide');
+    $('#save-button').removeClass('hide');
+  };
+
+  //Shows the original order ticket in display view
+  //Also hides the save button and show edit
+  $scope.displayView = function() {
+    $scope.displayMode = true;
+
+    $('#edit-button').removeClass('hide');
+    $('#save-button').addClass('hide');
+  };//End displayView function
+
+  //One update button press, the existing items are updated and views are switched out
+  $scope.updateOrder = function() {
+    $scope.displayView();
+    //Loops through each item obj ass. to order and edits existing objects in FB
+    angular.forEach($scope.itemList , function(each) {
+      OrderFactory.editItemList(each.itemId, each)
+      .then(function(returnObj) {});
+    });//End forEach loop
+  };//End updateOrder function
+
+
+  ////////////////////////////////////////////////////////////
+
+
+
+
 });
