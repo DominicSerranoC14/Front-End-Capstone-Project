@@ -12,17 +12,18 @@
 
 <div class="row">
   <h5 class="col s4 push-s1">Part Number</h5>
-  <h5 class="col s4 push-s1">Weight(lbs)</h5>
-  <h5 class="col s4 push-s1">Quantitiy</h5>
+  <h5 class="col s4 push-s1">Description</h5>
+  <h5 class="col s4 push-s1">Quantity</h5>
 </div>
 
 <div class="row" ng-repeat="each in itemList">
   <ul>
-    <li class="col s4 push-s1">{{each.itemNumber}}</li>
-    <li class="col s4 push-s1">{{each.itemDescription}}</li>
-    <li class="col s4 push-s1">{{each.itemQuantity}}</li>
-  </ul><hr>
-</div><br><br><br><br>
+    <li class="material-icons left">list</li>
+    <li class="col s3" ng-click="test()">{{each.itemNumber}}</li>
+    <li class="col s3 push-s1">{{each.itemDescription}}</li>
+    <li class="col s3 push-s3">{{each.itemQuantity}}</li>
+  </ul>
+</div><hr><br><br><br><br>
 
 <div class="row">
   <a class="waves-effect btn indigo col s2 offset-s3">Edit</a>

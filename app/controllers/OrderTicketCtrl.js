@@ -1,7 +1,7 @@
 "use strict";
 
 //Controller for the order-ticket view
-app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, OrderFactory ) {
+app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, OrderFactory, ItemSearchFactory ) {
 
   ////////////////////////////////////////////////////////
   //Prints order object on load

@@ -1,7 +1,7 @@
 "use strict";
 
 //Controller for the order-view partial
-app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, CustomerFactory, AuthFactory, OrderFactory) {
+app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, CustomerFactory, AuthFactory, OrderFactory, ItemSearchFactory) {
 
 
   //Store the current customers ID for FB here
@@ -58,12 +58,24 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
   //Display the new item to the page and push each added item to an array in the newOrderObj
   $scope.addItem = function() {
 
-    $scope.newOrderItemList.push($scope.newItem);
+    //Test if the user inputs a valid part number by filtering the local list of partnumbers.
+    let validateItem = $scope.searchList.filter(function(partNumber) {
+      return $scope.newItem.itemNumber.toUpperCase() === partNumber;
+    });
 
-    $scope.newItem = {
-      itemNumber: "",
-      itemQuantity: 0,
-    };
+    //If there are no matches, the array is empty with a length of '0', and a error is shown to the user
+    if ( validateItem.length === 0 ) {
+      //insert dialog here, then suggest search?
+      window.alert('Please enter valid partnumber.');
+    } else {
+      $scope.newOrderItemList.push($scope.newItem);
+
+      $scope.newItem = {
+        itemNumber: "",
+        itemQuantity: 0,
+      };
+    }
+
   };//End addItem function
 
 
@@ -96,12 +108,21 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
   ////////////////////////////////////////////////////
 
 
+  //Get predefined partnumbers localy and push to an array
+  ItemSearchFactory.getSearchPartNumbers()
+  .then(function(searchObject) {
 
-  $scope.options = [
-    'One', 'Two', 'Three'
-  ];
+    $scope.searchList = [];
 
+    angular.forEach(searchObject, function(item) {
+      $scope.searchList.push(item.partnumber);
+    });
+    console.log("Test $scope.searchList", $scope.searchList);
+  });
 
+  $scope.test = function() {
+    console.log("Test text");
+  };
 
 
 });//End of OrderViewCtrl
