@@ -23,6 +23,21 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
   ////////////////////////////////////////////////////////
 
 
+  ////////////////////////////////////////////////////
+  //Get predefined partnumbers localy and push to an array
+  ItemSearchFactory.getSearchPartNumbers()
+  .then(function(searchObject) {
+
+    $scope.searchList = [];
+
+    angular.forEach(searchObject, function(item) {
+      $scope.searchList.push(item.partnumber);
+    });
+    console.log("Test $scope.searchList", $scope.searchList);
+  });
+  ///////////////////////////////////////////////////
+
+
   ////////////////////////////////////////////////////////////
   //Function that deletes each order and related items from FB
   $scope.deleteOrder = function() {
@@ -55,6 +70,11 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
 
     $('#edit-button').addClass('hide');
     $('#save-button').removeClass('hide');
+
+    //When user keyups on input, the partnumber must be validated before updating the order
+    $('#item-number-input').keyup(function() {
+      $('#item-validate-btn').removeClass('disabled');
+    });
   };
 
   //Shows the original order ticket in display view
@@ -66,20 +86,37 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
     $('#save-button').addClass('hide');
   };//End displayView function
 
-  //One update button press, the existing items are updated and views are switched out
+
+  //Checks each edited item to insure it is an existing partnumber
+  $scope.validateItem = function(itemNumber) {
+
+    //Test if the user inputs a valid part number by filtering the local list of partnumbers.
+    let validateItem = $scope.searchList.filter(function(partNumber) {
+      return itemNumber === partNumber;
+    });
+
+    //If there are no matches, the array is empty with a length of '0', and a error is shown to the user
+    if ( validateItem.length === 0 ) {
+      //insert dialog here, then suggest search?
+      window.alert('Please enter valid partnumber.');
+    } else {
+      $('#item-validate-btn').addClass('disabled');
+    }
+  };//End validateItem function
+
+
+  //Once update button press, the existing items are updated and views are switched out
   $scope.updateOrder = function() {
-    $scope.displayView();
-    //Loops through each item obj ass. to order and edits existing objects in FB
-    angular.forEach($scope.itemList , function(each) {
-      OrderFactory.editItemList(each.itemId, each)
-      .then(function(returnObj) {});
-    });//End forEach loop
+
+  //Loops through each item obj ass. to order and edits existing objects in FB
+  angular.forEach($scope.itemList, function(item) {
+    OrderFactory.editItemList(item.itemId, item)
+    .then(function(returnObj) {
+      $scope.displayView();
+    });
+  });
+
   };//End updateOrder function
-
-
-  ////////////////////////////////////////////////////////////
-
-
 
 
 });

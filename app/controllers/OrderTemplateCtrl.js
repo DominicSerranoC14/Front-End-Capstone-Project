@@ -8,6 +8,20 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
   $scope.currentCustomer = null;
 
 
+  ////////////////////////////////////////////////////
+  //Get predefined partnumbers localy and push to an array
+  ItemSearchFactory.getSearchPartNumbers()
+  .then(function(searchObject) {
+
+    $scope.searchList = [];
+
+    angular.forEach(searchObject, function(item) {
+      $scope.searchList.push(item.partnumber);
+    });
+  });
+  ///////////////////////////////////////////////////
+
+
   //////////////////////////////////////////////////////
 
   //jQuery to activate the department drop down select
@@ -36,7 +50,18 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
 
   //////////////////////////////////////////////////
-  //Begin item order building
+  // Disable save and cancel buttons on new order until the user has entered something into the inputs
+  $scope.buttonView = function() {
+
+
+  };//End buttonView function
+
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+
+
+  //////////////////////////////////////////////////
+  //Begin new item order building
 
   //New object order to be passed to fb
   $scope.newOrderObj = {};
@@ -106,23 +131,6 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
   };//End submitOrder function
   ////////////////////////////////////////////////////
-
-
-  //Get predefined partnumbers localy and push to an array
-  ItemSearchFactory.getSearchPartNumbers()
-  .then(function(searchObject) {
-
-    $scope.searchList = [];
-
-    angular.forEach(searchObject, function(item) {
-      $scope.searchList.push(item.partnumber);
-    });
-    console.log("Test $scope.searchList", $scope.searchList);
-  });
-
-  $scope.test = function() {
-    console.log("Test text");
-  };
 
 
 });//End of OrderViewCtrl

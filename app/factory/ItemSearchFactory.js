@@ -28,6 +28,10 @@ app.factory('ItemSearchFactory', function($q, $http, FirebaseURL) {
   };//End getSearchPartNumbers function
   ///////////////////////////////////////////////////////////
 
+
+  //to set up a listener for a specific item use sdk listener
+  //$rootScope.$broadcast
+
   return { getSearchPartNumbers };
 
 });//End ItemSearchFactory

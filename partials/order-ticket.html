@@ -26,9 +26,10 @@
 </div>
 
 <div ng-hide="displayMode" class="row" ng-repeat="each in itemList">
-  <ul class="item-line-list">
+  <ul id="item-number-input" layout-margin class="item-line-list">
     <li><input ng-model="each.itemNumber" class="col m4" type="text" placeholder="Enter Item"></li>
     <li class="col push-s5"><input ng-model="each.itemQuantity" class="col m4" type="number" placeholder="Quantity" value=""></li>
+    <a id="item-validate-btn" ng-click="validateItem(each.itemNumber)" class="disabled right green waves-effect btn col s1">Save</a>
   </ul><br><br>
 </div><br><br><br>
 
