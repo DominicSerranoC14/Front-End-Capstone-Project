@@ -33,7 +33,6 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
     angular.forEach(searchObject, function(item) {
       $scope.searchList.push(item.partnumber);
     });
-    console.log("Test $scope.searchList", $scope.searchList);
   });
   ///////////////////////////////////////////////////
 
@@ -55,7 +54,7 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
     });//End forEach loop
 
   };//End deleteOrder function
-  ////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
 
 
   ////////////////////////////////////////////////////////////
@@ -101,6 +100,7 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
       window.alert('Please enter valid partnumber.');
     } else {
       $('#item-validate-btn').addClass('disabled');
+      $('#save-button').removeClass('disabled');
     }
   };//End validateItem function
 
@@ -117,6 +117,7 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
   });
 
   };//End updateOrder function
+  ////////////////////////////////////////////////////
 
 
 });

@@ -94,10 +94,7 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
       $('#autocomplete-container').addClass('hide');
     }
 
-    // console.log("Test $scope.autocompleteSearch", $scope.autocompleteSearch.charAt(0));
   });
-
-  $scope.showList = true;
 
 
   //Function that selects the autocompleted text to the input value
@@ -131,6 +128,7 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
   };//End addItem function
 
+  $('#edit-button').attr('disabled');
 
   //Function that sends the new object to the DB
   $scope.submitOrder = function() {

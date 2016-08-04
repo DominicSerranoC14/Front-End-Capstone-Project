@@ -40,8 +40,6 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
   /////////////////////////////////
   //Javascript for showing hidden dialogs
   // Editing customer information functionality listed here
-
-
   //Function that patches the edited obj to DB
   $scope.saveEditCustomer = function() {
 
@@ -65,6 +63,7 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       company : $scope.selectedCustomer.company,
       email : $scope.selectedCustomer.email,
       phone : $scope.selectedCustomer.phone,
+      favorite : $scope.selectedCustomer.favorite,
     };
 
     $mdDialog.show({
@@ -78,7 +77,8 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
   };//End function
 
 
-  ////////////////////////////////
-  ///////////////////////////////
+  ////////////////////////////////////////////
+  ///////////////////////////////////////////
+
 
 });//End of CustomerDetailCtrl
