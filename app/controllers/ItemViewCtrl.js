@@ -11,19 +11,17 @@ app.controller('ItemViewCtrl', function($scope, ItemSearchFactory) {
   };
 
   $scope.orderObjects = function() {
-
+    console.log("Test $scope.segList", $scope.segList);
     $scope.segList.sort(function( a, b ) {
-
-      if (a.order > b.order) {
+      if (a[0].order > b[0].order) {
         return 1;
       }
-      if (a.order < b.order) {
+      if (a[0].order < b[0].order) {
         return -1;
       }
       // a must be equal to b
       return 0;
     });
-    $scope.entireItem.push(baseItemObject);
   };
 
 
@@ -40,9 +38,10 @@ app.controller('ItemViewCtrl', function($scope, ItemSearchFactory) {
       ItemSearchFactory.getPartNumberItem(each)
       .then(function(item) {
         $scope.segList.push(item);
+        //sort segList after pushing each item
+        $scope.orderObjects();
         baseItemObject.desc += item[0].desc;
       });
-
     });//End of forEach
 
     angular.forEach(seg, function(each) {
@@ -52,8 +51,8 @@ app.controller('ItemViewCtrl', function($scope, ItemSearchFactory) {
         baseItemObject.itemList.push(collection);
       });
     });//End forEach loop
+    $scope.entireItem.push(baseItemObject);
   }loadAll();
-  $scope.orderObjects();
 
 
 
