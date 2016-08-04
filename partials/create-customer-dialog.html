@@ -1,0 +1,36 @@
+<div ng-controller="CustViewCtrl">
+ <div class="md-dialog-container" id="create-customer-dialog">
+   <md-dialog>
+     <div layout-margin>
+       <h4 layout-margin>Create Customer</h4>
+
+       <div class="input-field" layout-margin>
+         <input type="text" ng-model="newCustomer.name">
+         <label>Name</label>
+       </div>
+
+       <div class="input-field" layout-margin>
+         <input type="text" ng-model="newCustomer.company">
+         <label>Company</label>
+       </div>
+
+       <div class="input-field" layout-margin>
+         <input type="text" ng-model="newCustomer.email">
+         <label>Email</label>
+       </div>
+
+       <div class="input-field" layout-margin>
+         <input type="text" ng-model="newCustomer.phone">
+         <label>Phone</label>
+       </div>
+
+       <div class="row">
+         <md-button ng-click="hideCreateCustomer()">Cancel</md-button>
+         <md-button ng-click="createCustomer()">Create</md-button>
+       </div>
+
+     </div>
+
+   </md-dialog>
+ </div>
+</div>

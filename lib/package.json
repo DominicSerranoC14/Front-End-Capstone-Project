@@ -20,7 +20,13 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-mass-autocomplete": "^0.4.0",
+    "angular-material": "^1.1.0-rc.5",
+    "angular-material-icons": "^0.7.1",
     "angular-route": "^1.5.8",
+    "angular-sanitize": "^1.5.8",
     "angularfire": "^2.0.1",
     "bootstrap": "^3.3.6",
     "firebase": "^3.2.0",

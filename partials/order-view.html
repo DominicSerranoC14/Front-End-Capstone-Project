@@ -1,0 +1,28 @@
+
+<!--  Begin search bar for individual orders  -->
+<nav>
+  <div class="nav-wrapper indigo">
+    <form>
+      <div class="input-field">
+        <input id="search" placeholder="Search all orders" type="search" required>
+        <label for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+</nav>
+
+  <div layout-margin class="center">
+    <a href="#/view/order/template" class="waves-effect waves-light btn indigo">Create Order</a>
+  </div>
+
+<!--  Repeat each order here  -->
+<div class="row">
+  <div layout-margin ng-repeat="each in customerOrderList" class="section grey col s12 z-depth-3">
+   <a href="#/view/order/ticket/{{each.orderId}}">
+   <span class="material-icons right black-text">remove_red_eye</span></a>
+    <h5>Sales Order: {{each.salesNumber}}  |  {{each.customerCompany}}</h5>
+    <p>Ordered: {{each.date}}</p>  <p>{{each.customerName}}</p>
+    <div class="divider"></div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<!--  This partial is used to display individual customers and their associated orders when selected  -->
+
+
+<div class="row">
+   <div class="col s12">
+     <div class="card-panel indigo">
+       <span class="white-text">
+         <span class="material-icons right" ng-click="showEditCustomer()">edit</span>
+         <span id="favorite-icon" class="material-icons right">star</span>
+         <span class="material-icons right">face</span>
+         <p>Name: {{selectedCustomer.name}}</p>
+         <p>Company: {{selectedCustomer.company}}</p>
+         <p>Email: {{selectedCustomer.email}}</p>
+         <p>Phone: {{selectedCustomer.phone}}</p>
+       </span>
+     </div>
+   </div>
+ </div>
+
+
+ <!--  Repeat each order here  -->
+  <div class="row">
+    <div layout-margin ng-repeat="each in selectedCustomerOrderList" class="section grey col s12 z-depth-3">
+      <a href="#/view/order/ticket/{{each.orderId}}">
+      <span class="material-icons right black-text">remove_red_eye</span></a>
+      <h5>Sales Order: {{each.salesNumber}}  |  {{each.customerCompany}}</h5>
+      <p>Ordered: {{each.date}}</p>  <p>{{each.customerName}}</p>
+      <div class="divider"></div>
+    </div>
+  </div>
+
+
+<div style="visibility: hidden">
+  <div class="md-dialog-container" id="edit-customer">
+      <md-dialog>
+
+       <div layout-margin>
+         <span class="material-icons red-text right" ng-click="hideEditCustomer()">cancel</span>
+         <span class="material-icons green-text right" ng-click="saveEditCustomer()">check</span><br>
+         <p>Name: </p>
+         <p><input type="text" ng-model="editCustomerObj.name"></p>
+         <p>Company: </p>
+         <p><input type="text" ng-model="editCustomerObj.company"></p>
+         <p>Email: </p>
+         <p><input type="text" ng-model="editCustomerObj.email"></p>
+         <p>Phone: </p>
+         <p><input type="text" ng-model="editCustomerObj.phone"></p>
+         <p>
+         <input type="checkbox" id="test6"/>
+         <label for="test6">Favorite?</label>
+         </p>
+       </div>
+
+      </md-dialog>
+  </div>
+</div>

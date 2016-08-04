@@ -1,0 +1,32 @@
+/////////////////////////////////////////////////
+//Styling for item list in order-template partial
+.item-line-list li {
+  display: inline;
+}
+/////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+//Class for hiding buttons on order template
+.hide {
+  visibility: hidden;
+}
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+//Class
+#autocomplete-modal {
+  border: 2px solid black;
+  background: gray;
+  z-index: 100;
+  position: absolute;
+  left: 155px;
+  top: 420px;
+  height: 400px;
+  overflow: scroll;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  }
+////////////////////////////////////////////////
