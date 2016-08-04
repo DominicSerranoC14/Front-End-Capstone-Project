@@ -1,8 +1,27 @@
 <h2 class="center">Items</h2>
 
 <!--  Begin item display here  -->
-<div class="collection">
-  <a href="#!" class="collection-item">Item: {{item.itemNumber}}<span class="badge">Description: {{item.description}} </span></a>
+<div class="collection grey lighten-3" ng-repeat="item in entireItem">
+  <a class="collection-item indigo-text">Item: {{item.itemNumber}}<span ng-click="showItemList()" class="badge material-icons indigo-text">list</span></a>
+<div ng-show="itemView" class="row">
+  <div class="center col s12" ng-repeat="item in entireItem">
+    <ul class="collection">
+      <li class="collection-item grey lighten-2">{{item.desc}}</li>
+    </ul>
+  </div>
+  <div class="col s6" ng-repeat="item in entireItem[0].itemList[0]">
+    <ul class="collection">
+      <li class="collection-item grey lighten-2">{{item.name}} | Quantity: {{item.quantity}}</li>
+    </ul>
+  </div>
+  <div class="col s6" ng-repeat="item in entireItem[0].itemList[1]">
+    <ul class="collection">
+      <li class="collection-item grey lighten-2">{{item.name}} | Quantity: {{item.quantity}}</li>
+    </ul>
+  </div>
+  <div class="col s6" ng-repeat="item in entireItem[0].itemList[2]">
+    <ul class="collection">
+      <li class="collection-item grey lighten-2">{{item.name}} | Quantity: {{item.quantity}}</li>
+    </ul>
+  </div>
 </div>
-
-<button ng-click="orderObjects()">Test</button>

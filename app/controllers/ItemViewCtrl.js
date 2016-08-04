@@ -3,9 +3,12 @@
 //Controller for the order-view partial
 app.controller('ItemViewCtrl', function($scope, ItemSearchFactory) {
 
-  let test = "bmp-121048-06096";
-  let seg = test.split('-');
   $scope.segList = [];
+  $scope.entireItem = [];
+  let baseItemObject = {
+    itemList : [],
+    desc : ""
+  };
 
   $scope.orderObjects = function() {
 
@@ -20,27 +23,48 @@ app.controller('ItemViewCtrl', function($scope, ItemSearchFactory) {
       // a must be equal to b
       return 0;
     });
-
-    console.log("Test segList", $scope.segList);
-
+    $scope.entireItem.push(baseItemObject);
   };
 
+
   //Get each segment object from the selected partnumber
-  angular.forEach(seg, function(each) {
+  let partNumber = "bmp-121048-06096";
+  baseItemObject.itemNumber = partNumber.toUpperCase();
+  let seg = partNumber.split('-');
 
-    ItemSearchFactory.getPartNumberItem(each)
-    .then(function(item) {
 
-      $scope.segList.push(item);
+  function loadAll() {
+    angular.forEach(seg, function(each) {
 
-    });
+      //Gets all associated seg objects from the selected partnumber
+      ItemSearchFactory.getPartNumberItem(each)
+      .then(function(item) {
+        $scope.segList.push(item);
+        baseItemObject.desc += item[0].desc;
+      });
 
-    //Gets all associated items from the selected partnumber
-    ItemSearchFactory.getAssociatedItem(each)
-    .then(function(collection) {
-      $scope.itemList = collection;
-    });
+    });//End of forEach
 
-  });//End of forEach
+    angular.forEach(seg, function(each) {
+      //Gets all associated items from the selected partnumber
+      ItemSearchFactory.getAssociatedItem(each)
+      .then(function(collection) {
+        baseItemObject.itemList.push(collection);
+      });
+    });//End forEach loop
+  }loadAll();
+  $scope.orderObjects();
+
+
+
+  ////////////////////////////////////////////////////
+  //Section for showing and hiding item lists
+  $scope.itemView = false;
+
+  $scope.showItemList = function() {
+    $scope.itemView = !$scope.itemView;
+  };
+  ////////////////////////////////////////////////////
+
 
 });//End ItemViewCtrl
