@@ -53,10 +53,12 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
     name : "",
     company : "",
     email : "",
-    phone : ""
+    phone : "",
   };
+  ///////////////////////////////////////////////
 
 
+  ///////////////////////////////////////////////
   //Hides create customer dialog that is called from the view cust module
   $scope.hideCreateCustomer = function() {
     $mdDialog.hide();

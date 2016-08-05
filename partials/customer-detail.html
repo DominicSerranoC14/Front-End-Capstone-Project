@@ -6,7 +6,6 @@
      <div class="card-panel indigo">
        <span class="white-text">
          <span class="material-icons right" ng-click="showEditCustomer()">edit</span>
-         <span id="favorite-icon" class="material-icons right">star</span>
          <span class="material-icons right">face</span>
          <p>Name: {{selectedCustomer.name}}</p>
          <p>Company: {{selectedCustomer.company}}</p>
@@ -45,10 +44,6 @@
          <p><input type="text" ng-model="editCustomerObj.email"></p>
          <p>Phone: </p>
          <p><input type="text" ng-model="editCustomerObj.phone"></p>
-         <p>
-         <input type="checkbox" id="test6"/>
-         <label for="test6">Favorite?</label>
-         </p>
        </div>
 
       </md-dialog>
