@@ -38,7 +38,4 @@ app.controller('OrderViewCtrl', function($scope, $location, $mdDialog, AuthFacto
   ////////////////////////////////////////////////////
 
 
-
-
-
 });//End of OrderViewCtrl
