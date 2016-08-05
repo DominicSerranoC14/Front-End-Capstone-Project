@@ -4,11 +4,11 @@
 <div class="collection grey lighten-3" ng-repeat="item in entireItem">
   <a class="collection-item indigo-text">Item: {{item.itemNumber}}<span ng-click="showItemList()" class="badge material-icons indigo-text">list</span></a>
 <div ng-show="itemView" class="row">
-  <!-- <div class="col s12">
+  <div class="col s12">
     <ul class="collection center">
       <li ng-repeat="item in segList" class="collection-item grey lighten-2">{{item[0].desc}}</li>
     </ul>
-  </div> -->
+  </div>
   <div class="col s6" ng-repeat="item in entireItem[0].itemList[0]">
     <ul class="collection">
       <li class="collection-item grey lighten-2">{{item.name}} | Quantity: {{item.quantity}}</li>
