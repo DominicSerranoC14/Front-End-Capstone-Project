@@ -1,4 +1,19 @@
-<h2 class="center">Items</h2>
+<h2 class="center">Search For Item Lists</h2>
+
+<div id="item-search-form" class="container">
+
+  <div class="row grey lighten-2">
+    <h5 class="col s6">Select Partnumber:</h5>
+    <md-input-container class="center col s6">
+      <label>Partnumber</label>
+      <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
+        <md-optgroup label="customer">
+          <md-option ng-value="each" ng-repeat="each in customers">{{each.name}} | {{each.company}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+  </div>
+</div>
 
 <!--  Begin item display here  -->
 <div class="collection grey lighten-3" ng-repeat="item in entireItem">

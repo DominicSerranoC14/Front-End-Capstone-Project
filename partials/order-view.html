@@ -19,12 +19,15 @@
   </div>
 
 <!--  Repeat each order here  -->
+<!--  List view div begins here  -->
 <div ng-show="viewStyle" class="row">
   <div layout-margin ng-repeat="each in customerOrderList | filter: searchText" class="section grey lighten-2 col s12 z-depth-2">
    <span class="right"><a class="indigo-text" href="#/view/order/ticket/{{each.orderId}}">View Order
    </a></span>
-    <h5>Sales Order: {{each.salesNumber}}  |  {{each.customerCompany}}</h5>
-    <p>Ordered: {{each.date}}</p>  <p>{{each.customerName}}</p>
+    <h5><a class="indigo-text" href="#/view/order/ticket/{{each.orderId}}">Sales Order: {{each.salesNumber}}</a></h5>
+    <p>Customer: {{each.customerCompany}}</p>
+    <p>Ordered: {{each.date}}</p>
+    <p>Ordered By:{{each.customerName}}</p>
     <div class="divider"></div>
   </div>
 </div>
@@ -33,9 +36,12 @@
 <div ng-hide="viewStyle" class="row">
   <div ng-repeat="each in customerOrderList | filter: searchText" class="col s6">
     <div class="card grey lighten-1">
-      <div class="card-content black-text">
-        <span class="card-title">Sales Order: {{each.salesNumber}}  |  {{each.customerCompany}}</span>
-        <p>Ordered: {{each.date}}</p>  <p>{{each.customerName}}</p>
+      <div class="card-content black-text customer-card">
+        <span class="card-title">Sales Order: {{each.salesNumber}}</span>
+        <p></p><br>
+        <p>Customer: {{each.customerCompany}}</p><br>
+        <p>Ordered: {{each.date}}</p><br>
+        <p>Ordered By:{{each.customerName}}</p>
       </div>
       <div class="card-action">
         <a class="indigo-text" href="#/view/order/ticket/{{each.orderId}}">View Order</a>

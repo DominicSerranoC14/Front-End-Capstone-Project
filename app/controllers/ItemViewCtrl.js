@@ -26,9 +26,14 @@ app.controller('ItemViewCtrl', function($scope, ItemSearchFactory) {
 
 
   //Get each segment object from the selected partnumber
-  let partNumber = "bmp-121048-06096";
-  // "BMP-121048-09096", "BMP-121048-12096", "BMP-121048-060120", "BMP-121048-12120"];
-  baseItemObject.itemNumber = partNumber;
+  //Set the selected user input to scope var here
+  let partTest = "BMP-121048-09096";
+  //Convert it to lower case for FB search
+  let partNumber = partTest.toLowerCase();
+
+  //Stamp the current user input partnumver to the item chosen
+  baseItemObject.itemNumber = partNumber.toUpperCase();
+  //Split the part number for searching
   let seg = partNumber.split('-');
 
   function loadAll() {
@@ -47,11 +52,13 @@ app.controller('ItemViewCtrl', function($scope, ItemSearchFactory) {
 
     angular.forEach(seg, function(each) {
       //Gets all associated items from the selected partnumber
+      console.log("Test collection", each);
       ItemSearchFactory.getAssociatedItem(each)
       .then(function(collection) {
         baseItemObject.itemList.push(collection);
       });
     });//End forEach loop
+
     $scope.entireItem.push(baseItemObject);
   }loadAll();
 
