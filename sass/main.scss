@@ -16,13 +16,13 @@
 //Class
 #autocomplete-modal {
   border: 2px solid black;
-  background: lightgray;
   z-index: 100;
   position: absolute;
   left: 155px;
   top: 420px;
   height: 400px;
   overflow: scroll;
+  cursor: pointer;
 
   p {
     margin: 0;

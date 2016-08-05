@@ -62,11 +62,10 @@
 <!--  Autocomplete modal  -->
 <div id="autocomplete-container" class="row hide" ng-model="autocompleteSearch">
   <div id="autocomplete-modal" class="col s3">
-    <div ng-click="selectItem(item)" ng-repeat="item in searchList | filter: autocompleteSearch">
-      <p style="font-size: 12px" class="left">{{item}}</p><br>
-      <p class="center">Description</p><br><hr>
-  </div>
-  <div ng-show="!searchList.length">
+    <ul class="collection" ng-click="selectItem(item)" ng-repeat="item in searchList | filter: autocompleteSearch">
+      <li class="collection-item">{{item}}</li>
+    </ul>
+  <div ng-hide="searchList.length">
     <br><p layout-margin>No matches were found.</p>
     <br><p layout-margin>Please enter valid partnumber.</p>
   </div>
