@@ -29,12 +29,12 @@
   <ul id="item-number-input" layout-margin class="item-line-list">
     <li><input ng-model="each.itemNumber" class="col m4" type="text" placeholder="Enter Item"></li>
     <li class="col push-s5"><input ng-model="each.itemQuantity" class="col m4" type="number" placeholder="Quantity" value=""></li>
-    <a id="item-validate-btn" ng-click="validateItem(each.itemNumber)" class="disabled right green waves-effect btn col s1">Save</a>
+    <button id="item-validate-btn" ng-click="validateItem(each.itemNumber)" class="right green waves-effect btn col s1">Save</button>
   </ul><br><br>
 </div><br><br><br>
 
 <div layout-margin class="row">
   <button id="edit-button" ng-click="editView()" class="waves-effect btn indigo col s2 offset-s4">Edit</button>
-  <a id="save-button" ng-click="updateOrder()" class="hide waves-effect btn green col s2 offset-s4 disabled">Update</a>
+  <button id="save-button" ng-click="updateOrder()" class="hide waves-effect btn green col s2 offset-s4">Update</button>
   <a ng-click="deleteOrder()" class="waves-effect btn red col s2">Delete</a>
 </div>

@@ -7,11 +7,14 @@
     <md-input-container class="center col s6">
       <label>Partnumber</label>
       <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
-        <md-optgroup label="customer">
-          <md-option ng-value="each" ng-repeat="each in customers">{{each.name}} | {{each.company}}</md-option>
+        <md-optgroup label="Part Number">
+          <md-option ng-value="each" ng-repeat="each in searchList">{{each}}</md-option>
         </md-optgroup>
       </md-select>
     </md-input-container>
+    <div class="row center">
+      <button ng-click="loadAll()" class="btn indigo">Show List</button>
+    </div>
   </div>
 </div>
 

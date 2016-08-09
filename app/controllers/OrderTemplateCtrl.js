@@ -23,12 +23,14 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
 
   //////////////////////////////////////////////////////
-
   //jQuery to activate the department drop down select
   $(document).ready(function() {
     $('select').material_select();
   });
+  //////////////////////////////////////////////////////
 
+
+  //////////////////////////////////////////////////////
   //On view load, the select menu is populated with the users associated customers
   CustomerFactory.getCustomer(AuthFactory.getUser())
   .then(function(customerCollection) {
@@ -47,6 +49,7 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
   });//End view load of customers
   ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
 
 
   //////////////////////////////////////////////////
@@ -55,7 +58,6 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
 
   };//End buttonView function
-
   //////////////////////////////////////////////////
   //////////////////////////////////////////////////
 
