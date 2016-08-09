@@ -30,7 +30,7 @@ let clearItemSearch = function() {
 
 
   ////////////////////////////////////////////////////
-  //Get predefined partnumbers localy and push to an array
+  //Get predefined partnumbers locally and push to an array
   ItemSearchFactory.getSearchPartNumbers()
   .then(function(searchObject) {
 
@@ -48,12 +48,14 @@ let clearItemSearch = function() {
   //Function that returns either the selected text or a message that tells the user to select an item
   $scope.selectedItem = "";
   $scope.getSelectedText = function() {
-  if ($scope.selectedItem !== "") {
-    $scope.currentPartNumber = $scope.selectedItem;
-    return $scope.selectedItem;
-  } else {
-    return "  Please select a partnumber  ";
-  }
+    if ($scope.selectedItem !== "") {
+      $scope.currentPartNumber = $scope.selectedItem;
+      //Disable button when user selects a new item to list out
+      document.getElementById('item-list-button').removeAttribute('disabled');
+      return $scope.selectedItem;
+    } else {
+      return "  Please select a partnumber  ";
+    }
   };
   ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
@@ -82,6 +84,7 @@ let clearItemSearch = function() {
   ///////////////////////////////////////////////////
   $scope.loadAll = function() {
     clearItemSearch();
+    document.getElementById('item-list-button').setAttribute('disabled', 'true');
     //Set the selected user input to scope var here
     //Convert it to lower case for FB search
     let partNumber = $scope.selectedItem.toLowerCase();
