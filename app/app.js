@@ -5,12 +5,7 @@ const app = angular.module('FECAP', ['ngRoute', 'ngMaterial'])
 .constant('FirebaseURL', "https://front-end-capstone.firebaseio.com");
 
 
-app.config(function($mdThemingProvider, $routeProvider, FBCreds) {
-
-
-  $mdThemingProvider.theme('default')
-    .primaryPalette('indigo')
-    .accentPalette('orange');
+app.config(function($routeProvider, FBCreds) {
 
 
   let authConfig = {

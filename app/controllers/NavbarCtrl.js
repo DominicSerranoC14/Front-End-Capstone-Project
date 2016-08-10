@@ -51,7 +51,6 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog, $mdToast, Au
         .textContent('Thanks for visiting ' + AuthFactory.getUserName()[0] + '!')
         .position("right")
         .hideDelay(3000)
-        .theme("default")
     );
   };
   ////////////////////////////////////////////////
