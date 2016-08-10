@@ -1,16 +1,17 @@
 "use strict";
 
-app.controller("LoginCtrl", function( $scope, $location, AuthFactory ) {
+app.controller("LoginCtrl", function( $scope, $location, $mdToast, AuthFactory ) {
 
     // register function
 
   $scope.login = function() {
     AuthFactory.authWithProvider()
    .then(function(result) {
-     var user = result.user.uid;
+     let user = result.user.uid;
      console.log("logged in user fer sure", user);
      $location.path("/home");
      $scope.$apply();
+     $scope.showSimpleToast();
    }).catch(function(error) {
      // Handle Errors here.
      let errorCode = error.code;
@@ -22,6 +23,20 @@ app.controller("LoginCtrl", function( $scope, $location, AuthFactory ) {
      // ...
    });
   };
+
+
+  ////////////////////////////////////////////////
+  //This toast is used for login message for the user
+  $scope.showSimpleToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+        .textContent('Welcome ' + AuthFactory.getUserName()[0] + '!')
+        .position("right")
+        .hideDelay(3000)
+    );
+  };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
 
 
 });
