@@ -55,6 +55,30 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   ///////////////////////////////////////////////
 
 
+  ///////////////////////////////////////////////////////////////////////
+  // Angular for the dialog box confirming page leave on logout button press
+  // $mdDialog must be injected
+  $scope.showConfirmDeleteCustomer = function(eventDiv, customerNum, customerName, customerCompany) {
+    // Shows the contents of the dialog
+    let confirm = $mdDialog.confirm()
+          .title('Are you sure you want to delete this customer?')
+          .textContent('Deleting this customer will also all information associated.')
+          .targetEvent(eventDiv)
+          .ok('Delete')
+          .cancel('Cancel');
+    $mdDialog.show(confirm).then(function() {
+      $mdDialog.confirm().
+      //Redirect to login page
+        ok($location.url("/view/customer"));
+        //Deletes current customer and all order info
+        $scope.deleteCustomer(customerNum, customerName, customerCompany);
+      });
+  };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+
+
+
   ///////////////////////////////////////////////
   //Functionality for create customer button
   $scope.createCustomer = function() {
@@ -132,6 +156,5 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   };
   ////////////////////////////////////////////////
   ////////////////////////////////////////////////
-
 
 });//end CustViewCtrl
