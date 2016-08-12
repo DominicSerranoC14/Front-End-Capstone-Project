@@ -79,9 +79,11 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   // Function that deletes customer from DB and page
   $scope.deleteCustomer = function(customerNum, customerName, customerCompany) {
 
+    //Delete customer from DB
     CustomerFactory.deleteCustomer(customerNum)
     .then(function() {
 
+      //Repopulate the view after deleting selected customer
       CustomerFactory.getCustomer(AuthFactory.getUser())
       .then(function(customerCollection) {
         $rootScope.customerList.customers = customerCollection;
@@ -89,25 +91,31 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
 
     });
 
-    //Delete each order object from FB with customerID
+    //Begin deleting all orders and all order-items associated with the customer
     let customerOrderDeleteList = [];
+    //Filter through customers and return the one selection
     OrderFactory.getCustomerOrder()
     .then(function(customerList) {
       customerOrderDeleteList = customerList.filter(function(each) {
         return each.customerId === customerNum;
       });
-      // // angular.forEach(customerOrderDeleteList, function(order) {
-      // //   console.log("Test order", order);
-      // //   OrderFactory.deleteOrder(order.customerId)
-      // //   .then( function(response) {
-      // //     console.log("Test response", response);
-      // //   });
-      // });
+      //Delete each order obj. from FB associated with customer
+      angular.forEach(customerOrderDeleteList, function(order) {
+        OrderFactory.deleteOrder(order.orderId).then();
+
+        //Delete each order-item obj. from FB associated with customer
+        OrderFactory.getOrderItem(order.orderId)
+        .then(function(orderItemList) {
+          angular.forEach(orderItemList, function(orderItem) {
+            OrderFactory.deleteOrderItemList(orderItem.itemId).then();
+          });
+        });
+      });
     });
 
     $scope.showSimpleToast(customerName, customerCompany);
 
-  };//Delete Customer function
+  };//End Delete Customer function
   ///////////////////////////////////////////////
   ///////////////////////////////////////////////
 
