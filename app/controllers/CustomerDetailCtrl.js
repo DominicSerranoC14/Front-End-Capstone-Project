@@ -18,8 +18,11 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       })[0];
     });
   }; populateSelectedCustomer();
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
 
 
+  ///////////////////////////////////////////////////
   //Loads the current customers related orders
   let populateSelectedCustomerOrder = function() {
 
@@ -33,11 +36,11 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
     });
 
   }; populateSelectedCustomerOrder();
-
+  ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
 
 
-  /////////////////////////////////
+  ///////////////////////////////////////////////////
   //Javascript for showing hidden dialogs
   // Editing customer information functionality listed here
   //Function that patches the edited obj to DB

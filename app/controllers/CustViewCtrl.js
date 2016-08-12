@@ -1,10 +1,11 @@
 "use strict";
 
 //Controller for the HomeViewCtrl partial, will be ng-included in Index
-app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog, $mdToast, AuthFactory, CustomerFactory) {
+app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog, $mdToast, AuthFactory, CustomerFactory, OrderFactory) {
 
 
   ///////////////////////////////////////////////
+  //Main object and array to display each customer to view
   $rootScope.customerList = {};
   $rootScope.customerList.customers = [];
 
@@ -12,6 +13,9 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   $scope.speedDial = {};
   $scope.speedDial.isOpen = false;
   $scope.speedDial.mode = 'md-scale';
+  ///////////////////////////////////////////////
+  ///////////////////////////////////////////////
+
 
   ///////////////////////////////////////////////
   //Start create new customer functionality
@@ -73,9 +77,9 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
 
   ///////////////////////////////////////////////
   // Function that deletes customer from DB and page
-  $scope.deleteCustomer = function(customerId, customerName, customerCompany) {
+  $scope.deleteCustomer = function(customerNum, customerName, customerCompany) {
 
-    CustomerFactory.deleteCustomer(customerId)
+    CustomerFactory.deleteCustomer(customerNum)
     .then(function() {
 
       CustomerFactory.getCustomer(AuthFactory.getUser())
@@ -85,12 +89,27 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
 
     });
 
+    //Delete each order object from FB with customerID
+    let customerOrderDeleteList = [];
+    OrderFactory.getCustomerOrder()
+    .then(function(customerList) {
+      customerOrderDeleteList = customerList.filter(function(each) {
+        return each.customerId === customerNum;
+      });
+      // // angular.forEach(customerOrderDeleteList, function(order) {
+      // //   console.log("Test order", order);
+      // //   OrderFactory.deleteOrder(order.customerId)
+      // //   .then( function(response) {
+      // //     console.log("Test response", response);
+      // //   });
+      // });
+    });
+
     $scope.showSimpleToast(customerName, customerCompany);
 
   };//Delete Customer function
   ///////////////////////////////////////////////
   ///////////////////////////////////////////////
-
 
 
   ////////////////////////////////////////////////
@@ -105,7 +124,6 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   };
   ////////////////////////////////////////////////
   ////////////////////////////////////////////////
-
 
 
 });//end CustViewCtrl
