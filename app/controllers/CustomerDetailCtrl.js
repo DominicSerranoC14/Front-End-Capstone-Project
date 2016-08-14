@@ -16,6 +16,17 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       $scope.selectedCustomer = $scope.customerList.filter(function(cust) {
         return cust.id === $routeParams.customerId;
       })[0];
+
+      $scope.editCustomerObj = {
+        name : $scope.selectedCustomer.name,
+        company : $scope.selectedCustomer.company,
+        email : $scope.selectedCustomer.email,
+        phone : $scope.selectedCustomer.phone,
+        favorite : $scope.selectedCustomer.favorite
+      };
+
+      $scope.showFavorite = $scope.editCustomerObj.favorite;
+
     });
   }; populateSelectedCustomer();
   ///////////////////////////////////////////////////
@@ -32,17 +43,6 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       $scope.selectedCustomerOrderList = orderCollection.filter(function(order) {
         return order.customerId === $routeParams.customerId;
       });
-
-      $scope.editCustomerObj = {
-        name : $scope.selectedCustomer.name,
-        company : $scope.selectedCustomer.company,
-        email : $scope.selectedCustomer.email,
-        phone : $scope.selectedCustomer.phone,
-        favorite : $scope.selectedCustomer.favorite
-      };
-
-      $scope.showFavorite = $scope.editCustomerObj.favorite;
-
     });
 
   }; populateSelectedCustomerOrder();
@@ -61,7 +61,9 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
     //Then sets the edit object to the correct boolean value
     $scope.editCustomerObj.favorite = $scope.showFavorite;
 
-
+    //Patch the changed favorite value each click
+    CustomerFactory.editCustomer($routeParams.customerId, $scope.editCustomerObj)
+    .then();
 
   };
   ///////////////////////////////////////////////
