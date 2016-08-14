@@ -24,7 +24,7 @@ app.controller('HomeViewCtrl', function($scope, CustomerFactory, AuthFactory) {
   CustomerFactory.getCustomer(AuthFactory.getUser())
   .then(function(customerCollection) {
 
-    //Show only customers with favorited value of false, which equates to being true  
+    //Show only customers with favorited value of false, which equates to being true
     $scope.customerShortcut = customerCollection.filter(function(each) {
       return each.favorite === false;
     });
@@ -33,6 +33,17 @@ app.controller('HomeViewCtrl', function($scope, CustomerFactory, AuthFactory) {
   ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
 
+
+  ///////////////////////////////////////////////////
+  //Populate urgent orders here
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
+
+
+  ///////////////////////////////////////////////////
+  //Populate item graphs here
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
 
 
 
