@@ -33,11 +33,39 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
         return order.customerId === $routeParams.customerId;
       });
 
+      $scope.editCustomerObj = {
+        name : $scope.selectedCustomer.name,
+        company : $scope.selectedCustomer.company,
+        email : $scope.selectedCustomer.email,
+        phone : $scope.selectedCustomer.phone,
+        favorite : $scope.selectedCustomer.favorite
+      };
+
+      $scope.showFavorite = $scope.editCustomerObj.favorite;
+
     });
 
   }; populateSelectedCustomerOrder();
   ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
+
+
+  ///////////////////////////////////////////////
+  //All customer favoriting functionality goes hideCreateCustomer
+  //Replace true with selected customer.favorite
+
+  $scope.favoriteCustomer = function() {
+
+    //Toggles favoriting the customer each click
+    $scope.showFavorite = !$scope.editCustomerObj.favorite;
+    //Then sets the edit object to the correct boolean value
+    $scope.editCustomerObj.favorite = $scope.showFavorite;
+
+
+
+  };
+  ///////////////////////////////////////////////
+  ///////////////////////////////////////////////
 
 
   ///////////////////////////////////////////////////
@@ -66,7 +94,7 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       company : $scope.selectedCustomer.company,
       email : $scope.selectedCustomer.email,
       phone : $scope.selectedCustomer.phone,
-      favorite : $scope.selectedCustomer.favorite,
+      favorite : $scope.selectedCustomer.favorite
     };
 
     $mdDialog.show({

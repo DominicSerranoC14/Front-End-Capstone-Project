@@ -24,6 +24,8 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
     company : "",
     email : "",
     phone : "",
+    //Sets the new customer to not favorited by default
+    favorite: true
   };
   ///////////////////////////////////////////////
   ///////////////////////////////////////////////
@@ -61,8 +63,8 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   $scope.showConfirmDeleteCustomer = function(eventDiv, customerNum, customerName, customerCompany) {
     // Shows the contents of the dialog
     let confirm = $mdDialog.confirm()
-          .title('Are you sure you want to delete this customer?')
-          .textContent('Deleting this customer will also all information associated.')
+          .title('Are you sure you want to delete ' + customerName + '?')
+          .textContent('Deleting this customer will also delete all information associated, including all orders.')
           .targetEvent(eventDiv)
           .ok('Delete')
           .cancel('Cancel');

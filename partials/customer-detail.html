@@ -4,9 +4,16 @@
 <div class="row">
    <div class="col s12">
      <div class="card-panel indigo">
-       <span class="white-text">
+         <span ng-click="favoriteCustomer()" ng-show="showFavorite" class="material-icons right black-text">star_border</span>
+
+         <span ng-click="favoriteCustomer()" ng-hide="showFavorite" class="material-icons right yellow-text">star</span>
+
          <span class="material-icons right" ng-click="showEditCustomer()">edit</span>
+
          <span class="material-icons right">face</span>
+
+
+       <span class="white-text">
          <p>Name: {{selectedCustomer.name}}</p>
          <p>Company: {{selectedCustomer.company}}</p>
          <p>Email: {{selectedCustomer.email}}</p>
