@@ -1,12 +1,11 @@
 "use strict";
 
 //Set angular module
-const app = angular.module('FECAP', ['ngRoute', 'ngMaterial'])
+const app = angular.module('FECAP', ['ngRoute', 'ngMaterial', 'chart.js'])
 .constant('FirebaseURL', "https://front-end-capstone.firebaseio.com");
 
 
 app.config(function($routeProvider, FBCreds) {
-
 
   let authConfig = {
     apiKey: FBCreds.apiKey,
@@ -49,6 +48,10 @@ app.config(function($routeProvider, FBCreds) {
   when('/view/customer/detail/:customerId', {
     templateUrl: 'partials/customer-detail.html',
     controller: 'CustomerDetailCtrl'
+  }).
+  when('/view/inventory', {
+    templateUrl: 'partials/inventory-chart.html',
+    controller: 'InventoryCtrl'
   }).
   otherwise('/login');
 

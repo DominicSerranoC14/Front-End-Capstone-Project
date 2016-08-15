@@ -1,7 +1,7 @@
 "use strict";
 
 //Controller for the order-view partial
-app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, CustomerFactory, AuthFactory, OrderFactory, ItemSearchFactory) {
+app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, $mdToast, CustomerFactory, AuthFactory, OrderFactory, ItemSearchFactory) {
 
   //////////////////////////////////////////////////////
   //jQuery to activate the department drop down select
@@ -176,7 +176,8 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
         item.orderKey = orderId.name;
         OrderFactory.addItemToOrder(item)
         .then(function() {
-          $scope.showConfirmDeleteOrder();
+          $location.url('/view/order');
+          $scope.showConfirmOrderToast($scope.newOrderObj.salesNumber);
         });
       });//End forEach loop
     });//End Add new order obj to FB
@@ -202,6 +203,20 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
         ok($location.url("/view/order"));
         //Deletes current customer and all order info
       });
+  };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+
+
+  ////////////////////////////////////////////////
+  //This toast is used for login message for the user
+  $scope.showConfirmOrderToast = function(orderNumber) {
+    $mdToast.show(
+      $mdToast.simple()
+        .textContent( 'Order' + orderNumber + ' was created.')
+        .position("left")
+        .hideDelay(3000)
+    );
   };
   ////////////////////////////////////////////////
   ////////////////////////////////////////////////
