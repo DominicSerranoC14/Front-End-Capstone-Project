@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("AuthFactory", function () {
+app.factory("AuthFactory", function ($location) {
 
   let currentUserId = null;
   let userName = null;

@@ -112,7 +112,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
     $scope.data.push(stockArray);
   };
 
-
+  //Function populates the bar graph with the top 25 items based on sales
   $scope.listTop25 = function() {
 
     $scope.labels = [];

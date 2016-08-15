@@ -13,7 +13,7 @@
 <body ng-app="FECAP">
 
   <!--  Includes navbar on all views  -->
-  <div ng-include="'partials/navbar.html'"></div>
+  <div ng-hide="viewNavBar" ng-include="'partials/navbar.html'"></div>
 
   <div class="container" ng-view></div>
 

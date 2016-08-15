@@ -1,9 +1,9 @@
 "use strict";
 
-app.controller("LoginCtrl", function( $scope, $location, $mdToast, AuthFactory ) {
+app.controller("LoginCtrl", function( $scope, $rootScope, $location, $mdToast, AuthFactory ) {
 
-    // register function
-
+  ////////////////////////////////////////////////
+  // register function
   $scope.login = function() {
     AuthFactory.authWithProvider()
    .then(function(result) {
@@ -12,6 +12,7 @@ app.controller("LoginCtrl", function( $scope, $location, $mdToast, AuthFactory )
      $location.path("/home");
      $scope.$apply();
      $scope.showSimpleToast();
+     $scope.hideNavBar();
    }).catch(function(error) {
      // Handle Errors here.
      let errorCode = error.code;
@@ -23,6 +24,19 @@ app.controller("LoginCtrl", function( $scope, $location, $mdToast, AuthFactory )
      // ...
    });
   };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+
+
+  ////////////////////////////////////////////////
+  //Hide navbar if on login page
+  $rootScope.viewNavBar = true;
+
+  $scope.hideNavBar = function() {
+    $rootScope.viewNavBar = false;
+  };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
 
 
   ////////////////////////////////////////////////
@@ -37,6 +51,5 @@ app.controller("LoginCtrl", function( $scope, $location, $mdToast, AuthFactory )
   };
   ////////////////////////////////////////////////
   ////////////////////////////////////////////////
-
 
 });

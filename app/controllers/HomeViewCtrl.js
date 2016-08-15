@@ -15,6 +15,8 @@ app.controller('HomeViewCtrl', function($scope, CustomerFactory, AuthFactory) {
   $scope.speedDial = {};
   $scope.speedDial.isOpen = false;
   $scope.speedDial.mode = 'md-scale';
+
+  $scope.customerShortcut = [];
   //////////////////////////////////////////////////
   //////////////////////////////////////////////////
 
@@ -29,10 +31,15 @@ app.controller('HomeViewCtrl', function($scope, CustomerFactory, AuthFactory) {
       return each.favorite === false;
     });
 
+    //On each view load test if the customerShortcut array is empty, if so, advise user to create a customer
+    $scope.customerFavoriteNullMessage = true;
+
+    if ( $scope.customerShortcut.length === 0 ) {
+      $scope.customerFavoriteNullMessage = false;
+    }
   });// End function
   ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
-
 
   ///////////////////////////////////////////////////
   //Populate urgent orders here
