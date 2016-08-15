@@ -109,7 +109,6 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, $mdTo
       $('#autocomplete-container').addClass('hide');
       disbleFormButtons();
     }
-
   });
   //////////////////////////////////////////////
   //////////////////////////////////////////////
