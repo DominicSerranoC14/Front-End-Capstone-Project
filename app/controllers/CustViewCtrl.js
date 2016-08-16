@@ -36,7 +36,20 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
   CustomerFactory.getCustomer(AuthFactory.getUser())
   .then(function(customerCollection) {
     $rootScope.customerList.customers = customerCollection;
+
+    validateCustomerExistence();
   });// End CustomerFactory function
+
+  function validateCustomerExistence() {
+    //Reset the message
+    $scope.showNewCustomerMessage = true;
+    $('#customer-message').addClass('hide');
+    //Test if there are any customers created yet, if not, prompt user to create one
+    if ( $rootScope.customerList.customers.length === 0 ) {
+      $scope.showNewCustomerMessage = false;
+      $('#customer-message').removeClass('hide');
+    }
+  }//end validateCustomerExistence function
   ////////////////////////////////////////////////
   ////////////////////////////////////////////////
 
@@ -72,6 +85,7 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
       $mdDialog.confirm().
       //Redirect to login page
         ok($location.url("/view/customer"));
+        validateCustomerExistence();
         //Deletes current customer and all order info
         $scope.deleteCustomer(customerNum, customerName, customerCompany);
       });
@@ -92,6 +106,7 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
       CustomerFactory.getCustomer(AuthFactory.getUser())
       .then(function(customerCollection) {
         $rootScope.customerList.customers = customerCollection;
+        validateCustomerExistence();
       });
     });
 
@@ -113,6 +128,7 @@ app.controller('CustViewCtrl', function($scope, $rootScope, $location, $mdDialog
       CustomerFactory.getCustomer(AuthFactory.getUser())
       .then(function(customerCollection) {
         $rootScope.customerList.customers = customerCollection;
+        validateCustomerExistence();
       });// End CustomerFactory function
 
     });

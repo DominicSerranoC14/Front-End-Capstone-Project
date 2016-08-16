@@ -53,7 +53,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
 
 
   /////////////////////////////////////////////////////////////
-  //Event Listener for graph view icons, once clicked the view graph buttons are disabled
+  //Event Listener for graph view icons, once clicked the view graph buttons are enabled
   $('.graph-icons').click(function() {
     document.getElementById('top5Button').removeAttribute('disabled');
     document.getElementById('top10Button').removeAttribute('disabled');
@@ -70,7 +70,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
     //Reset the graph arrays
     $scope.labels = [];
     $scope.data = [];
-    $scope.pageMessage = 'Top 5 selling items.';
+    $scope.pageMessage = 'Top 5 selling items this quarter.';
 
     //Stores the first five of the inventory array
     let list = $scope.filterList.slice(0,5);
@@ -94,7 +94,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
     //Reset the graph arrays
     $scope.labels = [];
     $scope.data = [];
-    $scope.pageMessage = 'Top 10 selling items.';
+    $scope.pageMessage = 'Top 10 selling items this quarter.';
 
     //Stores the first ten of the inventory array
     let list = $scope.filterList.slice(0,10);
@@ -117,7 +117,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
 
     $scope.labels = [];
     $scope.data = [];
-    $scope.pageMessage = 'Top 25 selling items.';
+    $scope.pageMessage = 'Top 25 selling items this quarter.';
 
     let stockArray = [];
     let soldArray = [];

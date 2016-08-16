@@ -1,5 +1,5 @@
 <!--  Inventory Chart for top ten items  -->
-<div class="center">
+<div id="inventory-console" class="center">
   <ul class="right">
     <li ng-click="barGraphView()" class="material-icons graph-icons">equalizer</li>
     <li ng-click="radarGraphView()" class="material-icons graph-icons">select_all</li>
@@ -9,9 +9,9 @@
 </div>
 
 <div layout-margin class="center">
-  <button id="top5Button" disabled ng-click="listTop5()" class="btn waves-effect indigo">Top 5</button>
-  <button id="top10Button" disabled ng-click="listTop10()" class="btn waves-effect indigo">Top 10</button>
-  <button id="top25Button" disabled ng-click="listTop25()" class="btn waves-effect indigo">Top 25</button>
+  <button id="top5Button" disabled ng-click="listTop5()" class=" btn waves-effect indigo">Top 5</button>
+  <button id="top10Button" disabled ng-click="listTop10()" class=" btn waves-effect indigo">Top 10</button>
+  <button id="top25Button" disabled ng-click="listTop25()" class=" btn waves-effect indigo">Top 25</button>
 </div>
 
 <div ng-hide="viewBarGraph" id="bar-graph">
