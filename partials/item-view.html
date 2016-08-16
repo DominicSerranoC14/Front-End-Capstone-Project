@@ -1,0 +1,45 @@
+<h2 class="center">Search For Item Lists</h2>
+
+<div id="item-search-form" class="container">
+
+  <div class="row grey lighten-1">
+    <h5 class="col s6">Select Partnumber:</h5>
+    <md-input-container class="center col s6">
+      <label>Partnumber</label>
+      <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
+        <md-optgroup label="Part Number">
+          <md-option ng-value="each" ng-repeat="each in searchList">{{each}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+    <div class="row center">
+      <button id="item-list-button" ng-click="loadAll()" disabled class="btn indigo">Item List</button>
+    </div>
+  </div>
+</div>
+
+<!--  Begin item display here  -->
+<div class="collection grey lighten-3" ng-repeat="item in entireItem">
+  <a class="collection-item indigo-text">Item: {{item.itemNumber}}<span ng-click="showItemList()" class="badge material-icons indigo-text">list</span></a>
+<div ng-show="itemView" class="row">
+  <div class="col s12">
+    <ul class="collection center">
+      <li ng-repeat="item in segList" class="collection-item grey lighten-2">{{item[0].desc}}</li>
+    </ul>
+  </div>
+  <div class="col s6" ng-repeat="item in entireItem[0].itemList[0]">
+    <ul class="collection">
+      <li class="collection-item grey lighten-2">{{item.name}} | Quantity: {{item.quantity}}</li>
+    </ul>
+  </div>
+  <div class="col s6" ng-repeat="item in entireItem[0].itemList[1]">
+    <ul class="collection">
+      <li class="collection-item grey lighten-2">{{item.name}} | Quantity: {{item.quantity}}</li>
+    </ul>
+  </div>
+  <div class="col s6" ng-repeat="item in entireItem[0].itemList[2]">
+    <ul class="collection">
+      <li class="collection-item grey lighten-2">{{item.name}} | Quantity: {{item.quantity}}</li>
+    </ul>
+  </div>
+</div>

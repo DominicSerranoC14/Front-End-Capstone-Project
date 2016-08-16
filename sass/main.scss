@@ -16,17 +16,56 @@
 //Class
 #autocomplete-modal {
   border: 2px solid black;
-  background: gray;
+  background-color: darkgrey;
   z-index: 100;
   position: absolute;
   left: 155px;
   top: 420px;
   height: 400px;
   overflow: scroll;
+  cursor: pointer;
 
   p {
     margin: 0;
     padding: 0;
   }
   }
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+//Set rules for customer cards in grid view to be the same size
+.customer-card {
+  height : 200px;
+}
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+#item-search-form {
+  h4 {
+    display: inline;
+  }
+}
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+//Styling for inventory graphs
+#bar-graph {
+  margin-top: 2rem;
+}
+
+#radar-graph {
+  margin-top: 2rem;
+}
+
+#horizontal-graph {
+  margin-top: 2rem;
+}
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+#login-menu {
+  margin-top: 6rem; 
+}
 ////////////////////////////////////////////////

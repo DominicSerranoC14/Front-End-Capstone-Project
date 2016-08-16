@@ -1,7 +1,7 @@
 "use strict";
 
 //Set angular module
-const app = angular.module('FECAP', ['ngRoute', 'ngMaterial'])
+const app = angular.module('FECAP', ['ngRoute', 'ngMaterial', 'chart.js'])
 .constant('FirebaseURL', "https://front-end-capstone.firebaseio.com");
 
 
@@ -29,6 +29,10 @@ app.config(function($routeProvider, FBCreds) {
     templateUrl: 'partials/login-view.html',
     controller: 'LoginCtrl'
   }).
+  when('/view/item', {
+    templateUrl: 'partials/item-view.html',
+    controller: 'ItemViewCtrl'
+  }).
   when('/view/order', {
     templateUrl: 'partials/order-view.html',
     controller: 'OrderViewCtrl'
@@ -44,6 +48,10 @@ app.config(function($routeProvider, FBCreds) {
   when('/view/customer/detail/:customerId', {
     templateUrl: 'partials/customer-detail.html',
     controller: 'CustomerDetailCtrl'
+  }).
+  when('/view/inventory', {
+    templateUrl: 'partials/inventory-chart.html',
+    controller: 'InventoryCtrl'
   }).
   otherwise('/login');
 

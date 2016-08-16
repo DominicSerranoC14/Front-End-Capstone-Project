@@ -1,0 +1,33 @@
+<!--  Inventory Chart for top ten items  -->
+<div class="center">
+  <ul class="right">
+    <li ng-click="barGraphView()" class="material-icons graph-icons">equalizer</li>
+    <li ng-click="radarGraphView()" class="material-icons graph-icons">select_all</li>
+    <li ng-click="horizontalGraphView()" class="material-icons graph-icons">view_headline</li>
+  </ul>
+  <h4 class="center">{{pageMessage}}</h4>
+</div>
+
+<div layout-margin class="center">
+  <button id="top5Button" disabled ng-click="listTop5()" class="btn waves-effect indigo">Top 5</button>
+  <button id="top10Button" disabled ng-click="listTop10()" class="btn waves-effect indigo">Top 10</button>
+  <button id="top25Button" disabled ng-click="listTop25()" class="btn waves-effect indigo">Top 25</button>
+</div>
+
+<div ng-hide="viewBarGraph" id="bar-graph">
+  <canvas id="bar" class="chart chart-bar"
+    chart-data="data" chart-labels="labels" chart-series="series" chart-colors="colors">
+  </canvas>
+</div>
+
+<div ng-hide="viewRadarGraph" id="radar-graph">
+  <canvas id="radar" class="chart chart-radar"
+    chart-data="data" chart-options="options" chart-labels="labels" chart-colors="colors">
+  </canvas>
+</div>
+
+<div ng-hide="viewHorizontalGraph" id="horizontal-graph">
+  <canvas id="base" class="chart-horizontal-bar"
+    chart-data="data" chart-labels="labels" chart-colors="colors">
+  </canvas>
+</div>

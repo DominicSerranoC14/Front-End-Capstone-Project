@@ -4,7 +4,7 @@
   <div class="nav-wrapper indigo">
     <form>
       <div class="input-field">
-        <input id="search" placeholder="Search all orders" type="search" required>
+        <input id="search" ng-model="searchText" placeholder="Search all orders" type="search" required>
         <label for="search"><i class="material-icons">search</i></label>
         <i class="material-icons">close</i>
       </div>
@@ -14,15 +14,38 @@
 
   <div layout-margin class="center">
     <a href="#/view/order/template" class="waves-effect waves-light btn indigo">Create Order</a>
+    <span ng-click="showGrid()" class="material-icons right indigo-text">grid_on</span>
+    <span ng-click="showList()" class="material-icons right indigo-text">list</span>
   </div>
 
 <!--  Repeat each order here  -->
-<div class="row">
-  <div layout-margin ng-repeat="each in customerOrderList" class="section grey col s12 z-depth-3">
-   <a href="#/view/order/ticket/{{each.orderId}}">
-   <span class="material-icons right black-text">remove_red_eye</span></a>
-    <h5>Sales Order: {{each.salesNumber}}  |  {{each.customerCompany}}</h5>
-    <p>Ordered: {{each.date}}</p>  <p>{{each.customerName}}</p>
+<!--  List view div begins here  -->
+<div ng-show="viewStyle" class="row">
+  <div layout-margin ng-repeat="each in customerOrderList | filter: searchText" class="section grey lighten-2 col s12 z-depth-2">
+   <span class="right"><a class="indigo-text" href="#/view/order/ticket/{{each.orderId}}">View Order
+   </a></span>
+    <h5><a class="indigo-text" href="#/view/order/ticket/{{each.orderId}}">Sales Order: {{each.salesNumber}}</a></h5>
+    <p>Customer: {{each.customerCompany}}</p>
+    <p>Ordered: {{each.date}}</p>
+    <p>Ordered By:{{each.customerName}}</p>
     <div class="divider"></div>
+  </div>
+</div>
+
+<!--  Grid view div begins here  -->
+<div ng-hide="viewStyle" class="row">
+  <div ng-repeat="each in customerOrderList | filter: searchText" class="col s6">
+    <div class="card grey lighten-1">
+      <div class="card-content black-text customer-card">
+        <span class="card-title">Sales Order: {{each.salesNumber}}</span>
+        <p></p><br>
+        <p>Customer: {{each.customerCompany}}</p><br>
+        <p>Ordered: {{each.date}}</p><br>
+        <p>Ordered By:{{each.customerName}}</p>
+      </div>
+      <div class="card-action">
+        <a class="indigo-text" href="#/view/order/ticket/{{each.orderId}}">View Order</a>
+      </div>
+    </div>
   </div>
 </div>

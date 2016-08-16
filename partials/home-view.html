@@ -10,25 +10,26 @@
   <div class="col s12">
     <ul class="collapsible popout collection" data-collapsible="accordion">
 
-      <!--  Customer Shortcut tab  -->
-      <!--  Insert favorited cusomters here?  -->
       <li>
         <div class="collapsible-header">
           <i class="material-icons">face</i>Favorited Customers
         </div>
-          <div class="collapsible-body" ng-repeat="customer in customerShortcut">
-            <a href="#/view/customer/detail/{{customer.id}}">
-            <p>{{customer.name}}</p></a>
-          </div>
+        <div class="collapsible-body" ng-hide="customerFavoriteNullMessage">
+          <p>No favorited customer's yet!</p>
+        </div>
+        <div class="collapsible-body" ng-repeat="customer in customerShortcut">
+          <a href="#/view/customer/detail/{{customer.id}}">
+          <p>{{customer.name}}</p></a>
+        </div>
       </li>
 
       <li>
         <div class="collapsible-header"><i class="material-icons">list</i>Important Orders</div>
-        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="collapsible-body"><p><i class="material-icons left">build</i>Sorry! Under construction!</p></div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">whatshot</i>Items</div>
-        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="collapsible-body"><p><i class="material-icons left">build</i>Sorry! Under construction!</p></div>
       </li>
     </ul>
   </div>

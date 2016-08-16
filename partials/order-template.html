@@ -30,29 +30,30 @@
 
 
     <!--  Begin item display  -->
+    <!-- New item line -->
     <div class="row">
       <ul class="item-line-list">
         <li><input id="user-item-input" ng-model="newItem.itemNumber" class="col m4" type="text" placeholder="Enter Item"></li>
         <li><input ng-model="newItem.itemQuantity" class="col m3" type="number" placeholder="Quantity" value=""></li>
-        <li><a ng-click="addItem()" class="waves-effect waves-light btn indigo">Save Item</a></li>
-        <li><a ng-click="clearItemInput()" class="red waves-effect waves-light btn">Cancel</a></li>
+        <li><button id="save-item-button" disabled ng-click="addItem()" class="waves-effect waves-light btn indigo">Save Item</button></li>
+        <li><button id="clear-item-button" disabled ng-click="clearItemInput()" class="red waves-effect waves-light btn">Cancel</button></li>
       </ul>
     </div>
 
+    <!-- Saved item line starts here -->
     <div class="row" ng-repeat="item in newOrderItemList">
       <ul class="item-line-list">
         <li class="col m4" type="text">{{item.itemNumber}}</li>
         <li class="col m3" type="number">{{item.itemQuantity}}</li>
-        <li><a ng-click="" class="waves-effect waves-light btn indigo disabled">Edit Item</a></li>
-        <li><a ng-click="" class="waves-effect waves-light btn red disabled">Delete</a></li>
+        <li><button disabled ng-click="" class="waves-effect waves-light btn indigo">Edit Item</button></li>
+        <li><button ng-click="" class="waves-effect waves-light btn red disabled">Delete</button></li>
       </ul>
     </div><br><br><br>
 
 
-
-
     <div class="center">
-      <a ng-click="submitOrder()" class="green waves-effect waves-light btn">Submit</a>
+      <button id="submit-button" disabled ng-click="submitOrder()" class="green waves-effect btn">Submit</button>
+      <button ng-click="showConfirmDeleteOrder($event)" class="red waves-effect btn">Cancel Order</button>
     </div>
 
   </div>
@@ -60,15 +61,14 @@
 
 
 <!--  Autocomplete modal  -->
-<div id="autocomplete-container" class="row hide" ng-model="autocompleteSearch">
+<div id="autocomplete-container" class=" row hide" ng-model="autocompleteSearch">
   <div id="autocomplete-modal" class="col s3">
-    <div ng-click="selectItem(item)" ng-repeat="item in searchList | filter: autocompleteSearch">
-      <p style="font-size: 12px" class="left">{{item}}</p><br>
-      <p class="center">Description</p><br><hr>
-  </div>
-  <div ng-show="!searchList.length">
+    <ul class="collection">
+      <li  ng-click="selectItem(item)" ng-repeat="item in searchList | filter: autocompleteSearch" class="collection-item">{{item}}</li>
+    </ul>
+  <!-- <div ng-hide="searchListMessage">
     <br><p layout-margin>No matches were found.</p>
     <br><p layout-margin>Please enter valid partnumber.</p>
-  </div>
+  </div> -->
   </div>
 </div>

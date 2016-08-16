@@ -118,8 +118,8 @@ app.factory('OrderFactory', function($q, $http, FirebaseURL) {
       $http.delete(
         `${FirebaseURL}/order/${orderId}.json`
       )
-      .success(function() {
-        resolve();
+      .success(function(response) {
+        resolve(response);
       })
       .error(function(error) {
         reject(error);
@@ -142,6 +142,7 @@ app.factory('OrderFactory', function($q, $http, FirebaseURL) {
       });
     });
   };
+  ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
 
 

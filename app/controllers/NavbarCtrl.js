@@ -1,27 +1,21 @@
 'use strict';
 
 //Controller for the Navbar partial, will be ng-included in Index
-app.controller('NavbarCtrl', function($scope, $location, $mdDialog, AuthFactory) {
+app.controller('NavbarCtrl', function($scope, $location, $mdDialog, $mdToast, AuthFactory) {
 
 
+  //////////////////////////////////////////////////////////////////////
   //jQuery that activates drop down nav bar feature on page load
   $(document).ready(function() {
     $('#dropdown-button').dropdown();
   });
+  //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
 
 
-  //Trying to disable navbar when a user is not signed in
-  // if ( $location.url() === "/login" ) {
-  //   $scope.disableNavbar = true;
-  // } else {
-  //   $scope.disableNavbar = false;
-  // }
-
-
-  //////////////
+  ///////////////////////////////////////////////////////////////////////
   // Angular for the dialog box confirming page leave on logout button press
   // $mdDialog must be injected
-  /////////////
   $scope.showConfirm = function(eventDiv) {
     // Shows the contents of the dialog
     let confirm = $mdDialog.confirm()
@@ -30,19 +24,31 @@ app.controller('NavbarCtrl', function($scope, $location, $mdDialog, AuthFactory)
           .ok('Sign Out')
           .cancel('Cancel');
     $mdDialog.show(confirm).then(function() {
-      //Insert log out function here
-      //Also redirects to login page
       $mdDialog.confirm().
-        ok(console.log('works'),
-        $location.url("/login"));
+      //Redirect to login page
+        ok($location.url("/login"));
+        //Logs out the current user
         AuthFactory.signOut();
+        $scope.showSimpleToast();
       });
   };
   ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
 
-  //****************
-  //On page load display current user once Auth is working
-  //****************
+
+  ////////////////////////////////////////////////
+  //This toast is used for log out message for the user
+  $scope.showSimpleToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+        .textContent('Thanks for visiting ' + AuthFactory.getUserName()[0] + '!')
+        .position("right")
+        .hideDelay(3000)
+    );
+  };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+
 
 
 });//End NavbarCtrl

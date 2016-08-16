@@ -16,10 +16,24 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       $scope.selectedCustomer = $scope.customerList.filter(function(cust) {
         return cust.id === $routeParams.customerId;
       })[0];
+
+      $scope.editCustomerObj = {
+        name : $scope.selectedCustomer.name,
+        company : $scope.selectedCustomer.company,
+        email : $scope.selectedCustomer.email,
+        phone : $scope.selectedCustomer.phone,
+        favorite : $scope.selectedCustomer.favorite
+      };
+
+      $scope.showFavorite = $scope.editCustomerObj.favorite;
+
     });
   }; populateSelectedCustomer();
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
 
 
+  ///////////////////////////////////////////////////
   //Loads the current customers related orders
   let populateSelectedCustomerOrder = function() {
 
@@ -29,15 +43,34 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       $scope.selectedCustomerOrderList = orderCollection.filter(function(order) {
         return order.customerId === $routeParams.customerId;
       });
-
     });
 
   }; populateSelectedCustomerOrder();
-
+  ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
 
 
-  /////////////////////////////////
+  ///////////////////////////////////////////////
+  //All customer favoriting functionality goes hideCreateCustomer
+  //Replace true with selected customer.favorite
+
+  $scope.favoriteCustomer = function() {
+
+    //Toggles favoriting the customer each click
+    $scope.showFavorite = !$scope.editCustomerObj.favorite;
+    //Then sets the edit object to the correct boolean value
+    $scope.editCustomerObj.favorite = $scope.showFavorite;
+
+    //Patch the changed favorite value each click
+    CustomerFactory.editCustomer($routeParams.customerId, $scope.editCustomerObj)
+    .then();
+
+  };
+  ///////////////////////////////////////////////
+  ///////////////////////////////////////////////
+
+
+  ///////////////////////////////////////////////////
   //Javascript for showing hidden dialogs
   // Editing customer information functionality listed here
   //Function that patches the edited obj to DB
@@ -63,7 +96,7 @@ app.controller('CustomerDetailCtrl', function($scope, $mdDialog, $routeParams, C
       company : $scope.selectedCustomer.company,
       email : $scope.selectedCustomer.email,
       phone : $scope.selectedCustomer.phone,
-      favorite : $scope.selectedCustomer.favorite,
+      favorite : $scope.selectedCustomer.favorite
     };
 
     $mdDialog.show({

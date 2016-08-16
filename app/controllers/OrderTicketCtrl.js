@@ -21,6 +21,7 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
     });
   });//End page load function
   ////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////
 
 
   ////////////////////////////////////////////////////
@@ -34,6 +35,7 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
       $scope.searchList.push(item.partnumber);
     });
   });
+  ///////////////////////////////////////////////////
   ///////////////////////////////////////////////////
 
 
@@ -55,6 +57,7 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
 
   };//End deleteOrder function
   ///////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
 
 
   ////////////////////////////////////////////////////////////
@@ -70,9 +73,12 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
     $('#edit-button').addClass('hide');
     $('#save-button').removeClass('hide');
 
+    document.getElementById('item-validate-btn').setAttribute('disabled', 'true');
+    document.getElementById('save-button').setAttribute('disabled', 'true');
+
     //When user keyups on input, the partnumber must be validated before updating the order
     $('#item-number-input').keyup(function() {
-      $('#item-validate-btn').removeClass('disabled');
+      document.getElementById('item-validate-btn').removeAttribute('disabled');
     });
   };
 
@@ -99,8 +105,8 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
       //insert dialog here, then suggest search?
       window.alert('Please enter valid partnumber.');
     } else {
-      $('#item-validate-btn').addClass('disabled');
-      $('#save-button').removeClass('disabled');
+      document.getElementById('item-validate-btn').setAttribute('disabled', 'true');
+      document.getElementById('save-button').removeAttribute('disabled');
     }
   };//End validateItem function
 
@@ -117,6 +123,7 @@ app.controller('OrderTicketCtrl', function( $scope, $location, $routeParams, Ord
   });
 
   };//End updateOrder function
+  ////////////////////////////////////////////////////
   ////////////////////////////////////////////////////
 
 

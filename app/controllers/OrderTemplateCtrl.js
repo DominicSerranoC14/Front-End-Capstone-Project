@@ -1,34 +1,26 @@
 "use strict";
 
 //Controller for the order-view partial
-app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, CustomerFactory, AuthFactory, OrderFactory, ItemSearchFactory) {
-
-
-  //Store the current customers ID for FB here
-  $scope.currentCustomer = null;
-
-
-  ////////////////////////////////////////////////////
-  //Get predefined partnumbers localy and push to an array
-  ItemSearchFactory.getSearchPartNumbers()
-  .then(function(searchObject) {
-
-    $scope.searchList = [];
-
-    angular.forEach(searchObject, function(item) {
-      $scope.searchList.push(item.partnumber);
-    });
-  });
-  ///////////////////////////////////////////////////
-
+app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, $mdToast, CustomerFactory, AuthFactory, OrderFactory, ItemSearchFactory) {
 
   //////////////////////////////////////////////////////
-
   //jQuery to activate the department drop down select
   $(document).ready(function() {
     $('select').material_select();
   });
 
+  //Store the current customers ID for FB here
+  $scope.currentCustomer = null;
+  //Begin new item order building
+  //New object order to be passed to fb
+  $scope.newOrderObj = {};
+  //Each item line will be added to this array
+  $scope.newOrderItemList = [];
+  //////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////
+
+
+  //////////////////////////////////////////////////////
   //On view load, the select menu is populated with the users associated customers
   CustomerFactory.getCustomer(AuthFactory.getUser())
   .then(function(customerCollection) {
@@ -47,28 +39,25 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
   });//End view load of customers
   ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
 
 
-  //////////////////////////////////////////////////
-  // Disable save and cancel buttons on new order until the user has entered something into the inputs
-  $scope.buttonView = function() {
+  ////////////////////////////////////////////////////
+  //Get predefined partnumbers localy and push to an array
+  ItemSearchFactory.getSearchPartNumbers()
+  .then(function(searchObject) {
+
+    $scope.searchList = [];
+
+    angular.forEach(searchObject, function(item) {
+      $scope.searchList.push(item.partnumber);
+    });
+  });
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
 
 
-  };//End buttonView function
-
-  //////////////////////////////////////////////////
-  //////////////////////////////////////////////////
-
-
-  //////////////////////////////////////////////////
-  //Begin new item order building
-
-  //New object order to be passed to fb
-  $scope.newOrderObj = {};
-
-  //Each item line will be added to this array
-  $scope.newOrderItemList = [];
-
+  ///////////////////////////////////////////////////
   //Function that resests the newItem function
   $scope.clearItemInput = function() {
 
@@ -79,9 +68,35 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
 
   };//End clearItemInput function
 
+  //Function that cancels new order and returns to order page
+  $scope.cancelOrder = function() {
+    //takes user back to order view
+    $location.url('/view/order');
 
+    //Modal for warning user of deleting new order
+
+  };
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
+
+  let enableFormButtons = function() {
+    //Enable buttons for new item line
+    document.getElementById('save-item-button').removeAttribute('disabled');
+    document.getElementById('clear-item-button').removeAttribute('disabled');
+    document.getElementById('submit-button').removeAttribute('disabled');
+  };
+
+  let disbleFormButtons = function() {
+    //Disable button is input box is empty
+    document.getElementById('save-item-button').setAttribute('disabled', 'true');
+    document.getElementById('clear-item-button').setAttribute('disabled', 'true');
+  };
+
+  ///////////////////////////////////////////////////
   //Show autocomplete and filter user input with searchList of part numbers
   $('#user-item-input').keyup(function() {
+
+    enableFormButtons();
 
     //Show auto modal here
     $('#autocomplete-container').removeClass('hide');
@@ -92,21 +107,29 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
     //If input is blank hide modal
     if ( $scope.autocompleteSearch === "" ) {
       $('#autocomplete-container').addClass('hide');
+      disbleFormButtons();
     }
-
   });
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
 
+  //////////////////////////////////////////////
   //Function that selects the autocompleted text to the input value
   $scope.selectItem = function(item) {
     $scope.newItem.itemNumber = item;
     $('#autocomplete-container').addClass('hide');
   };
   //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
 
+  //////////////////////////////////////////////
   //Display the new item to the page and push each added item to an array in the newOrderObj
   $scope.addItem = function() {
+
+    //Disable buttons for next item
+    disbleFormButtons();
 
     //Test if the user inputs a valid part number by filtering the local list of partnumbers.
     let validateItem = $scope.searchList.filter(function(partNumber) {
@@ -127,9 +150,11 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
     }
 
   };//End addItem function
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
-  $('#edit-button').attr('disabled');
 
+  //////////////////////////////////////////////
   //Function that sends the new object to the DB
   $scope.submitOrder = function() {
 
@@ -151,12 +176,48 @@ app.controller('OrderTemplateCtrl', function($scope, $location, $mdDialog, Custo
         OrderFactory.addItemToOrder(item)
         .then(function() {
           $location.url('/view/order');
+          $scope.showConfirmOrderToast($scope.newOrderObj.salesNumber);
         });
       });//End forEach loop
     });//End Add new order obj to FB
 
   };//End submitOrder function
   ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
 
+
+  ///////////////////////////////////////////////////////////////////////
+  // Angular for the dialog box confirming page leave on logout button press
+  $scope.showConfirmDeleteOrder = function(eventDiv) {
+    // Shows the contents of the dialog
+    let confirm = $mdDialog.confirm()
+          .title('Are you sure you want to delete this order?')
+          .textContent('Any additions have NOT been saved.')
+          .targetEvent(eventDiv)
+          .ok('Delete')
+          .cancel('Cancel');
+    $mdDialog.show(confirm).then(function() {
+      $mdDialog.confirm().
+      //Redirect to login page
+        ok($location.url("/view/order"));
+        //Deletes current customer and all order info
+      });
+  };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+
+
+  ////////////////////////////////////////////////
+  //This toast is used for login message for the user
+  $scope.showConfirmOrderToast = function(orderNumber) {
+    $mdToast.show(
+      $mdToast.simple()
+        .textContent( 'Order' + orderNumber + ' was created.')
+        .position("left")
+        .hideDelay(3000)
+    );
+  };
+  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
 
 });//End of OrderViewCtrl

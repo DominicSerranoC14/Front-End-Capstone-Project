@@ -13,7 +13,7 @@
 <body ng-app="FECAP">
 
   <!--  Includes navbar on all views  -->
-  <div ng-include="'partials/navbar.html'"></div>
+  <div ng-hide="viewNavBar" ng-include="'partials/navbar.html'"></div>
 
   <div class="container" ng-view></div>
 
@@ -27,6 +27,8 @@
 <script src="lib/node_modules/angular-aria/angular-aria.js"></script>
 <script src="lib/node_modules/angular-animate/angular-animate.js"></script>
 <script src="lib/node_modules/angular-material/angular-material.js"></script>
+<script src="lib/node_modules/chart.js/dist/Chart.min.js"></script>
+<script src="lib/node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 
 
 <!-- App Links  -->
@@ -39,6 +41,7 @@
 <script src="app/factory/CustomerFactory.js"></script>
 <script src="app/factory/OrderFactory.js"></script>
 <script src="app/factory/ItemSearchFactory.js"></script>
+<script src="app/factory/InventoryFactory.js"></script>
 
 
 <!-- Controller Links  -->
@@ -51,6 +54,8 @@
 <script src="app/controllers/OrderViewCtrl.js"></script>
 <script src="app/controllers/OrderTemplateCtrl.js"></script>
 <script src="app/controllers/OrderTicketCtrl.js"></script>
+<script src="app/controllers/ItemViewCtrl.js"></script>
+<script src="app/controllers/InventoryCtrl.js"></script>
 
 <!-- Auth Links  -->
 
