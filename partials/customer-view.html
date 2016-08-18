@@ -25,6 +25,15 @@
   </div>
 
   <div class="col s11">
+
+    <ul id="customer-message" ng-hide="showNewCustomerMessage" class="collection hide">
+      <li class="collection-item avatar grey lighten-2">
+        <br>
+        <span ng-click="showCreateCustomer($event)" class="title indigo-text">No customers created yet. Click here to create a new customer!</span>
+        <p></p>
+      </li>
+    </ul>
+
     <ul class="collection" ng-repeat="customer in customerList.customers">
 
      <li class="collection-item avatar grey lighten-2">

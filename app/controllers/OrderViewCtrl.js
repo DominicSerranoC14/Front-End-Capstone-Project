@@ -6,9 +6,9 @@ app.controller('OrderViewCtrl', function($scope, $location, $mdDialog, AuthFacto
   ////////////////////////////////////////////////////
   // Load all orders and display to DOM
   OrderFactory.getCustomerOrder()
-  .then(function(customerCollection) {
+    .then(function(customerCollection) {
 
-  $scope.customerOrderList = customerCollection;
+    $scope.customerOrderList = customerCollection;
   });
   ////////////////////////////////////////////////////
 
