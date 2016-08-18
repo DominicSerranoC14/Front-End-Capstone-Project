@@ -70,7 +70,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
     //Reset the graph arrays
     $scope.labels = [];
     $scope.data = [];
-    $scope.pageMessage = 'Top 5 selling items this quarter.';
+    $scope.pageMessage = 'Top 5 selling items to current date.';
 
     //Stores the first five of the inventory array
     let list = $scope.filterList.slice(0,5);
@@ -94,7 +94,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
     //Reset the graph arrays
     $scope.labels = [];
     $scope.data = [];
-    $scope.pageMessage = 'Top 10 selling items this quarter.';
+    $scope.pageMessage = 'Top 10 selling items to current date.';
 
     //Stores the first ten of the inventory array
     let list = $scope.filterList.slice(0,10);
@@ -117,7 +117,7 @@ app.controller('InventoryCtrl', function($scope, InventoryFactory) {
 
     $scope.labels = [];
     $scope.data = [];
-    $scope.pageMessage = 'Top 25 selling items this quarter.';
+    $scope.pageMessage = 'Top 25 selling to current date.';
 
     let stockArray = [];
     let soldArray = [];
