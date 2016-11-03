@@ -1,0 +1,19 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /Users/dominicserrano/.nvm/versions/node/v6.7.0/bin/node /Users/dominicserrano/.nvm/versions/node/v6.7.0/bin/firebase deploy
+[debug] CLI Version:  3.0.7
+[debug] Platform:     darwin
+[debug] Node Version: v6.7.0
+[debug] Time:         Wed Nov 02 2016 21:33:42 GMT-0500 (CDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/front-end-capstone 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/front-end-capstone/tokens 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'front-end-capstone'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing public directory for upload...

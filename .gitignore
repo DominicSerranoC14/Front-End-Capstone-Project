@@ -1,6 +1,6 @@
 lib/bower_components
 lib/node_modules
-styles/
+sass/
 app/factories/values/FirebaseCreds.js
 npm-debug.log
 app/values
